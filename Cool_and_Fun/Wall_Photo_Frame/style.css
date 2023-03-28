@@ -1,0 +1,23 @@
+body {
+  background: #B6D8C0;
+}
+
+img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 200px;
+  width: 90%;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-style: solid;
+  border-width: 15px;
+  border-top-color: #333333;
+  border-right-color: black;
+  border-bottom-color: #333333;
+  border-left-color: black;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}

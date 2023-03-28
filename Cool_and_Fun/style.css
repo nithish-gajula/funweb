@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Mochiy Pop One', sans-serif;
+}
+
+body {
+  display: inline;
+  min-height: 100vh;
+  background: #252839;
+}
+
+ul {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  gap: 30px;
+}
+ul li {
+  position: relative;
+  list-style: none;
+}
+ul li a {
+  font-size: 2em;
+  text-decoration: none;
+  letter-spacing: 1px;
+  line-height: 1em;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+}
+ul li a::before {
+  content: attr(data-text);
+  position: absolute;
+  color: var(--clr);
+  width: 0;
+  overflow: hidden;
+  transition: 1s;
+  border-right: 8px solid var(--clr);
+  -webkit-text-stroke: 1px var(--clr);
+}
+ul li a:hover::before {
+  width: 100%;
+  filter: drop-shadow(0 0 25px var(--clr))
+}
+
+div {
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
+
+}
+
+div:first-of-type {    /* For increasing performance 
+                       ID/Class should've been used. 
+                       For a small demo 
+                       it's okaish for now */
+  animation: showup 7s infinite;
+  margin-left: 20%;
+  margin-bottom: 2%;
+  font-size: xx-large;
+  color: #808080;
+}
+
+div:last-of-type {
+  margin-bottom: 2%;
+  width:0px;
+  animation: reveal 7s infinite;
+}
+
+div:last-of-type span {
+  margin-left:-355px;
+  animation: slidein 7s infinite;
+  font-size: xx-large;
+  color: #808080;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:355px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:355px;}
+}
+
