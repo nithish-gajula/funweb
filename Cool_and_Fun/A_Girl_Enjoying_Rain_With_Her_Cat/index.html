@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons&family=Comfortaa&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+</head>
+    <body>
+        <div class="app">
+            <div class="bg">
+                <div class="traffic"></div>
+                <canvas class="cnv"></canvas>
+            </div>
+            <div class="window anm">
+                <div class="cat">
+                    <div class="cHead">
+                        <div class="cEar1 anm"></div>
+                        <div class="cEar2 anm"></div>
+                    </div>
+                    <div class="cBody"></div>
+                    <div class="cLeg"></div>
+                </div>
+                <div class="girl">
+                    <div class="gBody anm">
+                        <div class="gNeck">
+                            <div class="gHead anm">
+                                <div class="gPTail1 anm"></div>
+                                <div class="gPTail2 anm"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cn"></div>
+            <div class="menu">
+                <div class="mnTtl">menu</div>
+                <ul class="mnItems">
+                    <li>
+                        <div class="itemName">rain quantity</div>
+                        <div class="slideItem">
+                            <svg width='100%' height='100%'>
+                                <path class="slidePath" d="M 195 15 H 72.5 M 5 15 H 58.5 A 1 1 0 0 0 72.5 15 A 2 2 90 0 0 58.5 15"/>
+                            </svg>
+                            <input type="range" min="16" max="184" value="65" oninput="slideF(0)" onchange="rnQnF()" class="slider">
+                        </div>
+                        <div class="slideVal">30</div>
+                    </li>
+                    <li>
+                        <div class="itemName">sfx volume</div>
+                        <div class="slideItem">
+                            <svg width='100%' height='100%'>
+                                <path class="slidePath" d="M 195 15 H 91.5 M 5 15 H 76.5 A 1 1 0 0 0 91.5 15 A 2 2 90 0 0 76.5 15"/>
+                            </svg>
+                            <input type="range" min="16" max="184" value="84" oninput="slideF(1)" class="slider">
+                        </div>
+                        <div class="slideVal">4</div>
+                    </li>
+                    <li>
+                        <div class="itemName">music volume</div>
+                        <div class="slideItem">
+                            <svg width='100%' height='100%'>
+                                <path class="slidePath" d="M 195 15 H 121.5 M 5 15 H 106.5 A 1 1 0 0 0 121.5 15 A 2 2 90 0 0 106.5 15"/>
+                            </svg>
+                            <input type="range" min="16" max="184" value="114" oninput="slideF(2)" class="slider">
+                        </div>
+                        <div class="slideVal">6</div>
+                    </li>
+                    <li>
+                        <div class="itemName">glassmorphism</div>
+                        <div class="toggleItem" onclick="toggleF()">
+                            <svg width='100%' height='100%'>
+                                <path class="togglePath1" d="M 5 15 C 5 20 9 25 15 25 C 20 25 20 25 25 25 C 29 25 30 27.5 35 27.5 C 41 27.5 47.5 22.75 47.5 15 C 47.5 7.25 41 2.5 35 2.5 C 30 2.5 29 5 25 5 C 20 5 20 5 15 5 C 9 5 5 10 5 15"/>
+                                <path class="togglePath2" d="M 35 7.5 A 1 1 0 0 0 35 22.5 A 1 1 0 0 0 35 7.5"/>
+                            </svg>
+                        </div>
+                    </li>
+                    <li style='height:80px;'>
+                        <div class="itemName mscName"></div>
+                        <div class="mscCnt"></div>
+                        <div class="mscCtrl">
+                            <div class="lpBtn" onclick="lpF()">
+                                <span class="material-icons-sharp">
+                                    repeat
+                                </span>
+                            </div>
+                            <div class="pvBtn" onclick="pvF()">
+                                <span class="material-icons-sharp">
+                                    skip_previous
+                                </span>
+                            </div>
+                            <div class="ppBtn" onclick="ppF()">
+                                <span class="material-icons-sharp">
+                                    play_arrow
+                                </span>
+                            </div>
+                            <div class="nxBtn" onclick="nxF()">
+                                <span class="material-icons-sharp">
+                                    skip_next
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mscSl">
+                            <svg width='100%' height='100%'>
+                                <path class="mscPath" d="M 5 15 H 10 C 16 15 15 20 20 20 A 2 2 90 0 0 20 10 M 100 15 H 40 C 33 15 32.5 28 20 28 A 2 2 90 0 1 20 24 A 2 2 90 0 0 20 6"/>
+                            </svg>
+                            <input type="range" min="20" value="20" oninput="mscSlF()" class="mscSldr">
+                            <div class="mscCT">0.00</div>
+                            <div class="mscDr">0.00</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="mnBtn" onclick="mnBtnF()"></div>
+            <div class="alrt">
+                <div class="cont">
+                    <h1 style='text-align: center;'>Hi!!</h1>
+                    <p style="text-align: center;"><strong>Thank you!</strong> For viewing. I really hope you like the code. If you do, then please upvote.</p>
+                    <p>After this window tap on the screen for more options.</p>
+                    <div class="clsBtn" onclick="clsF()">Let's Go Yeah!!</div>
+                </div>
+            </div>
+            <div class="ldr">
+                <div class="ball">Loading...</div>
+            </div>
+        </div>
+    </body>
+</html>

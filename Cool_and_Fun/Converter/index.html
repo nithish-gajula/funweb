@@ -1,0 +1,38 @@
+<!-- Created by Qaza Metaj -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Converter </title>
+        
+       <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+    </head>
+    
+    <body>
+    <!-- Head-->
+    <h3>Converter decimal to binary</h3>
+    
+    <!-- Numeric Textfield -->
+<form action="#">
+  <div class="mdl-textfield mdl-js-textfield">
+    <input id="zahl" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">
+    <label class="mdl-textfield__label" for="sample2">Number...</label>
+    <span class="mdl-textfield__error">Input is not a number!</span>
+  </div>
+</form>
+    
+    <!--Button-->
+    <button onclick="binär()" class="mdl-button mdl-js-button mdl-button--primary">
+  To Binary
+</button><br><br>
+    <p>The binary number is:</p>
+    <strong><p id="x"></p></strong>
+    
+    </body>
+    
+</html>
