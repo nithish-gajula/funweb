@@ -1,0 +1,63 @@
+/* Created by Aakaanksha💕 [Exams] */
+
+body{
+	background: #ffe4e8;
+}
+
+.title{
+	font-size: 30px;
+	text-align: center;
+	font-family: 'Oswald', sans-serif;
+	color: #e50035;
+	text-decoration: underline;
+}
+
+.form{
+	text-align: center;
+	width: 300px;
+	margin: auto;
+}
+
+.username, .password{
+	margin: 10px;
+	border: none;
+	outline: none;
+	border-bottom: solid 2px #e50035;
+	background: transparent;
+	width: 270px;
+	height: 30px;
+	color: #e50035;
+	font-family: 'Raleway', sans-serif;
+	font-weight: bold;
+}
+
+.login{
+	background: #e50035;
+	font-family: 'Oswald', sans-serif;
+	width: 100px;
+	padding: 5px;
+	margin-top: 10px;
+	margin-left: 178px;
+	border-radius: 5px;
+	color: white;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.forgot{
+	color: #e50035;
+	font-family: 'Raleway', sans-serif;
+}
+
+.container{
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-top: 10%;
+}
+
+footer{
+	text-align: center;
+	margin-top: 50px;
+	color: #e50035;
+	font-family: 'Raleway', sans-serif;
+}
