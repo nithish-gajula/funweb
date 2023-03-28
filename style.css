@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  font-family: poppins;
+}
+
+body {
+  background: #161623;
+}
+
+a
+{
+  color: inherit;
+  text-decoration: none;
+}
+
+.view {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.hide_scroll{
+  top: 0;
+  bottom: 0;
+  left: 10%;
+  right: auto;
+  position: fixed;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.view .hide_scroll h1 {
+	color: #fff;
+  font-weight: 10px;
+  font-size: 22px;
+  margin-left: 33%;
+}
+
+.left_1 {
+
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+    
+}
+
+/*
+
+.left_1 {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 50%;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+*/
+
+/*
+.left_1 {
+  width: 40%;
+  position: relative;
+  margin-left: 0;
+  margin-right: auto;
+  overflow-y: auto;
+  background-color: #3fefef;
+} */
+
+
+
+.card {
+  width: 550px;
+  height: 60px;
+  margin: 20px;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.2)
+  );
+  backdrop-filter: blur(1px);
+  box-shadow: 0 0 20px #000;
+  border-top: 2px solid rgba(255, 255, 255, 0.25);
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+
+.card p {
+  color: #fff;
+  font-weight: 10px;
+  font-size: 17px;
+  text-align: center;
+}
+
+
+.right_1 {
+  width: 40%;
+  position: relative;
+  margin-top: 5%;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+
+
+.scanner {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.scanner .fingarprint {
+	position: relative;
+	width: 300px;
+	height: 380px;
+	background: url(image1.png);
+	background-size: 300px;
+}
+
+.scanner .fingarprint::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url(image2.png);
+	background-size: 300px;
+	animation: animate 4s ease-in-out infinite;
+}
+
+@keyframes animate {
+	0%,
+	100% {
+			height: 0%;
+	}
+	50% {
+			height: 100%;
+	}
+}
+
+.scanner .fingarprint::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 8px;
+	background: #3fefef;
+	border-radius: 8px;
+	filter: drop-shadow(0 0 20px #3fefef) drop-shadow(0 0 60px #3fefef);
+	animation: animate_line 4s ease-in-out infinite;
+}
+
+@keyframes animate_line {
+	0%,
+	100% {
+			top: 0%;
+	}
+	50% {
+			top: 100%;
+	}
+}
+
+.scanner h3 {
+	text-transform: uppercase;
+	font-size: 2em;
+	letter-spacing: 2px;
+	margin-top: 20px;
+	color: #3fefef;
+	filter: drop-shadow(0 0 20px #3fefef) drop-shadow(0 0 60px #3fefef);
+	animation: animate_text 0.5s steps(1) infinite;
+}
+
+@keyframes animate_text {
+	0%,
+	100% {
+			opacity: 0;
+	}
+	50% {
+			opacity: 1;
+	}
+}
