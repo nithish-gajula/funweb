@@ -1,24 +1,27 @@
 /* Created by Quickcoder */
 
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: "Verdana";
     background-color: #000;
 }
-#game{
+
+#game {
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
-#break{
+
+#break {
     flex-basis: 100%;
-    width: 0px; 
-    height: 0px; 
+    width: 0px;
+    height: 0px;
     overflow: hidden;
 }
-#loader-bg{
+
+#loader-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -31,11 +34,13 @@ body{
     z-index: 100;
     background-color: #000;
 }
-#loader-text{
+
+#loader-text {
     color: #fff;
     text-shadow: -2px -2px #1ea6f5, 2px 2px #f00a8c;
 }
-#loader-bar{
+
+#loader-bar {
     width: 120px;
     height: 20px;
     z-index: 99;
@@ -43,7 +48,8 @@ body{
     animation: loading 1s infinite steps(6);
     -webkit-mask: linear-gradient(90deg, #000 70%, #0000 0) left /20% 100%;
 }
-#alert-background{
+
+#alert-background {
     position: fixed;
     top: 0;
     left: 0;
@@ -53,7 +59,8 @@ body{
     background-color: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(2px);
 }
-#alert-box{
+
+#alert-box {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -69,7 +76,8 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
 }
-#alert-title{
+
+#alert-title {
     margin: 0px;
     text-align: center;
     padding: 10px;
@@ -81,7 +89,8 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
 }
-#alert-text{
+
+#alert-text {
     margin-top: 20px;
     margin-right: 5px;
     margin-bottom: 0;
@@ -94,12 +103,14 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
 }
-#alert-button-container{
+
+#alert-button-container {
     padding: 0 10px;
     max-height: 20vh;
     overflow-y: auto;
 }
-.alert-button{
+
+.alert-button {
     width: 100px;
     height: 30px;
     margin: 5px;
@@ -110,7 +121,8 @@ body{
     border-radius: 7px;
     background-color: #f23a9c;
 }
-.button{
+
+.button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,11 +134,13 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
 }
-.info{
+
+.info {
     position: absolute;
 }
-@keyframes loading{
-    100%{
+
+@keyframes loading {
+    100% {
         background-position: right -25% top 0;
     }
 }

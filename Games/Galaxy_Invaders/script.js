@@ -2,33 +2,33 @@
 
 let game;
 
-class Picture{
-    constructor(src){
+class Picture {
+    constructor(src) {
         this.img = new Image();
         this.img.src = src;
     }
 }
 
-class Camera{
-    follow(body){
-        if ((body.x + body.width/2) < game.canvas.width/2){
-            this.x = game.canvas.width/2 - game.canvas.width/2;
+class Camera {
+    follow(body) {
+        if ((body.x + body.width / 2) < game.canvas.width / 2) {
+            this.x = game.canvas.width / 2 - game.canvas.width / 2;
         }
-        else if ((body.x + body.width/2) > (game.background.width - game.canvas.width/2)){
-            this.x = game.canvas.width/2 - (game.background.width - game.canvas.width/2);
+        else if ((body.x + body.width / 2) > (game.background.width - game.canvas.width / 2)) {
+            this.x = game.canvas.width / 2 - (game.background.width - game.canvas.width / 2);
         }
-        else{
-            this.x = game.canvas.width/2 - (body.x + body.width/2);
+        else {
+            this.x = game.canvas.width / 2 - (body.x + body.width / 2);
         }
 
-        if ((body.y + body.height/2) < game.canvas.height/2){
-            this.y = game.canvas.height/2 - game.canvas.height/2;
+        if ((body.y + body.height / 2) < game.canvas.height / 2) {
+            this.y = game.canvas.height / 2 - game.canvas.height / 2;
         }
-        else if ((body.y + body.height/2) > (game.background.height - game.canvas.height/2)){
-            this.y = game.canvas.height/2 - (game.background.height - game.canvas.height/2);
+        else if ((body.y + body.height / 2) > (game.background.height - game.canvas.height / 2)) {
+            this.y = game.canvas.height / 2 - (game.background.height - game.canvas.height / 2);
         }
-        else{
-            this.y = game.canvas.height/2 - (body.y + body.height/2);
+        else {
+            this.y = game.canvas.height / 2 - (body.y + body.height / 2);
         }
 
         game.ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -36,8 +36,8 @@ class Camera{
     }
 }
 
-class Alert{
-    pop(args){
+class Alert {
+    pop(args) {
         this.background = document.createElement("div");
         this.background.setAttribute("id", "alert-background");
 
@@ -46,13 +46,13 @@ class Alert{
         this.box = document.createElement("div");
         this.box.setAttribute("id", "alert-box");
 
-        if (args.title){
+        if (args.title) {
             this.title = document.createElement("h1");
             this.title.innerHTML = `&nbsp&nbsp${args.title}&nbsp&nbsp`;
             this.title.setAttribute("id", "alert-title");
         }
 
-        if (args.text){
+        if (args.text) {
             this.text = document.createElement("h4");
             this.text.innerText = args.text;
             this.text.setAttribute("id", "alert-text");
@@ -61,8 +61,8 @@ class Alert{
         this.buttonContainer = document.createElement("div");
         this.buttonContainer.setAttribute("id", "alert-button-container");
 
-        if (args.buttons){
-            for (let text of args.buttons){
+        if (args.buttons) {
+            for (let text of args.buttons) {
                 let button = document.createElement("button");
 
                 button.innerText = text;
@@ -75,19 +75,19 @@ class Alert{
                     button.style.color = "#fff";
                     button.style.backgroundColor = "#d14791";
                 }
-                button.onpointerout= () => {
+                button.onpointerout = () => {
                     button.style.color = "#fff";
                     button.style.backgroundColor = "#f23a9c";
                 }
                 button.onclick = () => {
                     this.background.remove();
 
-                    if (args[`${text}Onclick`]){
+                    if (args[`${text}Onclick`]) {
                         let func = eval(args[`${text}Onclick`]);
-                        if (this.input){
+                        if (this.input) {
                             func(this.input.value);
                         }
-                        else{
+                        else {
                             func();
                         }
                     }
@@ -95,7 +95,7 @@ class Alert{
                 this.buttonContainer.appendChild(button);
             }
         }
-        else{
+        else {
             let button = document.createElement("button");
 
             button.innerText = "OK";
@@ -108,7 +108,7 @@ class Alert{
                 button.style.color = "#fff";
                 button.style.backgroundColor = "#d14791";
             }
-            button.onpointerout= () => {
+            button.onpointerout = () => {
                 button.style.color = "#fff";
                 button.style.backgroundColor = "#f23a9c";
             }
@@ -116,14 +116,14 @@ class Alert{
                 this.background.remove();
                 this.box.remove();
             }
-            this.buttonContainer.appendChild(button);            
+            this.buttonContainer.appendChild(button);
         }
 
-        if (args.title){
+        if (args.title) {
             this.box.appendChild(this.title);
         }
         this.box.appendChild(this.break);
-        if (args.text){
+        if (args.text) {
             this.box.appendChild(this.text);
         }
         this.box.appendChild(this.break);
@@ -134,8 +134,8 @@ class Alert{
     }
 }
 
-class Button{
-    constructor(x, y, width, height, text){
+class Button {
+    constructor(x, y, width, height, text) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -145,25 +145,25 @@ class Button{
         this.node = document.createElement("div");
         this.node.setAttribute("class", "button");
 
-        this.node.style.left = `${this.x/100*(game.canvas.getBoundingClientRect().width) + game.canvas.getBoundingClientRect().left}px`;
-        this.node.style.top = `${game.canvas.getBoundingClientRect().bottom - this.y/100*game.canvas.getBoundingClientRect().height}px`;
-        this.node.style.width = `${this.width/100*(game.canvas.getBoundingClientRect().width)}px`;
-        this.node.style.height = `${this.height/100*(game.canvas.getBoundingClientRect().height)}px`;
+        this.node.style.left = `${this.x / 100 * (game.canvas.getBoundingClientRect().width) + game.canvas.getBoundingClientRect().left}px`;
+        this.node.style.top = `${game.canvas.getBoundingClientRect().bottom - this.y / 100 * game.canvas.getBoundingClientRect().height}px`;
+        this.node.style.width = `${this.width / 100 * (game.canvas.getBoundingClientRect().width)}px`;
+        this.node.style.height = `${this.height / 100 * (game.canvas.getBoundingClientRect().height)}px`;
 
         this.node.innerText = this.text;
 
         document.body.appendChild(this.node);
     }
-    resize(){
-        this.node.style.left = `${this.x/100*(game.canvas.getBoundingClientRect().width) + game.canvas.getBoundingClientRect().left}px`;
-        this.node.style.top = `${game.canvas.getBoundingClientRect().bottom - this.y/100*game.canvas.getBoundingClientRect().height}px`;
-        this.node.style.width = `${this.width/100*(game.canvas.getBoundingClientRect().width)}px`;
-        this.node.style.height = `${this.height/100*(game.canvas.getBoundingClientRect().height)}px`;
+    resize() {
+        this.node.style.left = `${this.x / 100 * (game.canvas.getBoundingClientRect().width) + game.canvas.getBoundingClientRect().left}px`;
+        this.node.style.top = `${game.canvas.getBoundingClientRect().bottom - this.y / 100 * game.canvas.getBoundingClientRect().height}px`;
+        this.node.style.width = `${this.width / 100 * (game.canvas.getBoundingClientRect().width)}px`;
+        this.node.style.height = `${this.height / 100 * (game.canvas.getBoundingClientRect().height)}px`;
     }
 }
 
-class Lives{
-    constructor(images, x, y, width, height){
+class Lives {
+    constructor(images, x, y, width, height) {
         this.images = images;
         this.x = x;
         this.y = y;
@@ -172,8 +172,8 @@ class Lives{
 
         this.img = this.images[0];
     }
-    update(lives){
-        switch (lives){
+    update(lives) {
+        switch (lives) {
             case 2:
                 this.img = this.images[1];
 
@@ -186,20 +186,20 @@ class Lives{
                 this.img = this.images[0];
         }
     }
-    render(){
+    render() {
         game.ctx.drawImage(this.img, -game.camera.x + this.x, -game.camera.y + this.y, this.width, this.height);
     }
 }
 
-class Score{
-    constructor(img, x, y, width, height){
+class Score {
+    constructor(img, x, y, width, height) {
         this.img = img;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
     }
-    render(){
+    render() {
         game.ctx.drawImage(this.img, -game.camera.x + this.x, -game.camera.y + this.y, this.width, this.height);
 
         game.ctx.fillStyle = "#fff";
@@ -208,27 +208,27 @@ class Score{
     }
 }
 
-class Stage{
-    constructor(x, y){
+class Stage {
+    constructor(x, y) {
         this.x = x;
         this.y = y;
     }
-    render(){
+    render() {
         game.ctx.fillStyle = "#fff";
         game.ctx.font = "20px Verdana";
         game.ctx.fillText(`Stage: ${game.level}`, -game.camera.x + this.x, -game.camera.y + this.y);
     }
 }
 
-class MushroomCount{
-    constructor(img, x, y, width, height){
+class MushroomCount {
+    constructor(img, x, y, width, height) {
         this.img = img;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
     }
-    render(){
+    render() {
         game.ctx.drawImage(this.img, -game.camera.x + this.x, -game.camera.y + this.y, this.width, this.height);
 
         game.ctx.fillStyle = "#fff";
@@ -237,59 +237,59 @@ class MushroomCount{
     }
 }
 
-class Background{
-    constructor(img, x, y, width, height){
+class Background {
+    constructor(img, x, y, width, height) {
         this.img = img;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
     }
-    render(){
+    render() {
         game.ctx.clearRect(0, 0, 800, 1200);
         game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 }
 
-class Sprite{
-    constructor(frameWidth, frameHeight, frameColumn, frameStart, frameStop, frameRate){
+class Sprite {
+    constructor(frameWidth, frameHeight, frameColumn, frameStart, frameStop, frameRate) {
         this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
         this.frameColumn = frameColumn;
         this.frameStart = frameStart;
         this.frameStop = frameStop;
         this.frameRate = frameRate;
-    
-        this.sx = this.frameStart*this.frameWidth;
-        this.sy = this.frameColumn*this.frameHeight;
+
+        this.sx = this.frameStart * this.frameWidth;
+        this.sy = this.frameColumn * this.frameHeight;
     }
-    animate(img, x, y, width, height, flipX, flipY){
-        if (!game.paused){
+    animate(img, x, y, width, height, flipX, flipY) {
+        if (!game.paused) {
             this.frame = game.frame.current;
 
-            if (this.frame % this.frameRate === 0){
+            if (this.frame % this.frameRate === 0) {
                 this.sx += this.frameWidth;
             }
-            if (this.sx > this.frameStop*this.frameWidth){
-                this.sx = this.frameStart*this.frameWidth;
+            if (this.sx > this.frameStop * this.frameWidth) {
+                this.sx = this.frameStart * this.frameWidth;
             }
-            if (this.frameStop !== this.frameEnd){
+            if (this.frameStop !== this.frameEnd) {
                 this.frameEnd = this.frameStop;
-                this.sx = this.frameStart*this.frameWidth;
+                this.sx = this.frameStart * this.frameWidth;
             }
 
             game.ctx.save();
-            game.ctx.translate(x + width/2, y + width/2);
+            game.ctx.translate(x + width / 2, y + width / 2);
             game.ctx.scale(flipX ? -1 : 1, flipY ? -1 : 1);
-            game.ctx.translate(-(x + width/2), -(y + width/2));
+            game.ctx.translate(-(x + width / 2), -(y + width / 2));
             game.ctx.drawImage(img, this.sx, this.sy, this.frameWidth, this.frameHeight, x, y, width, height);
             game.ctx.restore();
         }
     }
 }
 
-class Player{
-    constructor(img, x, y, width, height, flipped){
+class Player {
+    constructor(img, x, y, width, height, flipped) {
         this.img = img;
         this.x = x;
         this.y = y;
@@ -297,10 +297,10 @@ class Player{
         this.height = height;
         this.flipped = flipped;
 
-        if (this.flipped){
+        if (this.flipped) {
             this.flipX = true;
         }
-        else{
+        else {
             this.flipX = false;
         }
         this.flipY = false;
@@ -314,101 +314,101 @@ class Player{
         this.jumping = false;
 
         this.lives = 3;
-    
+
         this.sprite = new Sprite(32, 30, 0.1, 0, 20, 5);
     }
-    physics(){
+    physics() {
         this.x += this.vx;
         this.y += this.vy;
 
         this.vy += game.gravity;
 
-        if (this.movingLeft){
+        if (this.movingLeft) {
             this.left();
         }
-        else if (this.movingRight){
+        else if (this.movingRight) {
             this.right();
         }
-        else{
+        else {
             this.stop();
         }
 
-        if (this.x <= 0){
+        if (this.x <= 0) {
             this.x = 0;
         }
-        if (this.x + this.width >= game.background.width){
+        if (this.x + this.width >= game.background.width) {
             this.x = game.background.width - this.width;
         }
-        if (this.y > game.background.height){
+        if (this.y > game.background.height) {
             this.destroy();
         }
     }
-    stand(platfromY){
+    stand(platfromY) {
         this.jumping = false;
 
         this.vy = 0;
         this.y = platfromY - this.height;
     }
-    left(){
+    left() {
         this.vx = -4;
         this.flipX = true;
         this.animate("walk");
     }
-    right(){
+    right() {
         this.vx = 4;
         this.flipX = false;
         this.animate("walk");
     }
-    jump(){
-        if (!this.jumping){
+    jump() {
+        if (!this.jumping) {
             this.vy = -10;
             this.jumping = true;
         }
     }
-    highJump(){
-        if (!this.jumping){
+    highJump() {
+        if (!this.jumping) {
             this.vy = -12.5;
             this.jumping = true;
         }
     }
-    stop(){
+    stop() {
         this.vx = 0;
         this.animate("stand");
     }
-    bumpUp(platfromY, platformSize){
+    bumpUp(platfromY, platformSize) {
         this.vy = 0;
         this.y = platfromY + platformSize - 5;
     }
-    bumpRight(platformX){
+    bumpRight(platformX) {
         this.vx = 0;
         this.x = (platformX - 5) - this.width;
     }
-    bumpLeft(platformX, platformSize){
+    bumpLeft(platformX, platformSize) {
         this.vx = 0;
         this.x = (platformX + 5) + platformSize;
     }
-    destroy(){
+    destroy() {
         this.lives -= 1;
 
-        if (this.lives === 0){
+        if (this.lives === 0) {
             this.lives = 3;
 
             game.notifyLost();
         }
-        else{
+        else {
             game.restartLevel();
         }
         game.lives.update(this.lives);
     }
-    respawn(){
+    respawn() {
         this.x = game.playerConfig[game.levelCode].x;
         this.y = game.playerConfig[game.levelCode].y;
         this.flipX = game.playerConfig[game.levelCode].flipped;
 
         this.vy = 0;
     }
-    animate(animation){
-        switch (animation){
+    animate(animation) {
+        switch (animation) {
             case "stand":
                 this.sprite.frameStart = 0;
                 this.sprite.frameStop = 10;
@@ -425,13 +425,13 @@ class Player{
                 return;
         }
     }
-    render(){
+    render() {
         this.sprite.animate(this.img, this.x, this.y, this.width, this.height, this.flipX, this.flipY);
     }
 }
 
-class Slime{
-    constructor(img, x, y, width, height, start, stop){
+class Slime {
+    constructor(img, x, y, width, height, start, stop) {
         this.img = img;
         this.x = x;
         this.y = y;
@@ -446,51 +446,51 @@ class Slime{
         this.moving = 1;
 
         this.vx = 0;
-    
+
         this.sprite = new Sprite(34, 27, 0.45, 0, 3, 10);
     }
-    physics(){
+    physics() {
         this.x += this.vx;
 
-        if (this.moving === 0){
+        if (this.moving === 0) {
             this.left();
         }
-        else{
+        else {
             this.right();
         }
 
-        if (this.x <= this.start){
+        if (this.x <= this.start) {
             this.moving = 1;
         }
-        if (this.x >= this.stop){
+        if (this.x >= this.stop) {
             this.moving = 0;
         }
     }
-    left(){
+    left() {
         this.vx = -2.5;
         this.flipX = false;
     }
-    right(){
+    right() {
         this.vx = 2.5;
         this.flipX = true;
     }
-    collide(body){
-         if (
+    collide(body) {
+        if (
             (body.x + body.width > this.x + 20) &&
             (body.x < this.x + this.width - 20) &&
             (body.y + body.height > this.y + 5) &&
             (body.y < this.y + this.height - 10)
-        ){
+        ) {
             game.player.destroy();
-        }        
+        }
     }
-    render(){
+    render() {
         this.sprite.animate(this.img, this.x, this.y, this.width, this.height, this.flipX, this.flipY);
     }
 }
 
-class Eater{
-    constructor(img, x, y, width, height){
+class Eater {
+    constructor(img, x, y, width, height) {
         this.img = img;
         this.x = x;
         this.y = y;
@@ -499,34 +499,34 @@ class Eater{
 
         this.flipX = false;
         this.flipY = false;
-    
+
         this.sprite = new Sprite(64, 41, 0.4, 0, 13, 6);
     }
-    direction(body){
-        if (body.x + body.width/2 > this.x + this.width/2){
+    direction(body) {
+        if (body.x + body.width / 2 > this.x + this.width / 2) {
             this.flipX = true;
         }
-        else{
+        else {
             this.flipX = false;
         }
     }
-    collide(body){
-         if (
+    collide(body) {
+        if (
             (body.x + body.width > this.x + 35) &&
             (body.x < this.x + this.width - 35) &&
             (body.y + body.height > this.y + 40) &&
             (body.y < this.y + this.height)
-        ){
+        ) {
             game.player.destroy();
         }
     }
-    render(){
+    render() {
         this.sprite.animate(this.img, this.x, this.y, this.width, this.height, this.flipX, this.flipY);
-    }    
+    }
 }
 
-class Ghost{
-    constructor(img, x, y, width, height, flipped){
+class Ghost {
+    constructor(img, x, y, width, height, flipped) {
         this.img = img;
         this.x = x;
         this.y = y;
@@ -534,11 +534,11 @@ class Ghost{
         this.height = height;
         this.flipped = flipped;
 
-        if (this.flipped){
+        if (this.flipped) {
             this.flipX = true;
             this.direction = "right";
         }
-        else{
+        else {
             this.flipX = false;
             this.direction = "left";
         }
@@ -548,22 +548,22 @@ class Ghost{
 
         this.sprite = new Sprite(80, 60, 1.45, 0, 2, 30);
     }
-    shoot(){
-        if ((this.sprite.sx/this.sprite.frameWidth === 2) && !this.shooting){
+    shoot() {
+        if ((this.sprite.sx / this.sprite.frameWidth === 2) && !this.shooting) {
             this.shooting = true;
             game.bolts.push(new Bolt(game.assets.boltImg.img, this.flipped ? this.x + 70 : this.x + 30, this.y + 48, 10, 10, this.x - 150, this.x + this.width + 150, this.direction));
         }
-        if (this.sprite.sx/this.sprite.frameWidth === 0){
+        if (this.sprite.sx / this.sprite.frameWidth === 0) {
             this.shooting = false;
         }
     }
-    render(){
+    render() {
         this.sprite.animate(this.img, this.x, this.y, this.width, this.height, this.flipX, this.flipY);
-    }    
+    }
 }
 
-class Bolt{
-    constructor(img, x, y, width, height, minX, maxX, direction){
+class Bolt {
+    constructor(img, x, y, width, height, minX, maxX, direction) {
         this.img = img;
         this.x = x;
         this.y = y;
@@ -573,8 +573,8 @@ class Bolt{
         this.maxX = maxX;
         this.direction = direction;
     }
-    physics(){
-        switch (this.direction){
+    physics() {
+        switch (this.direction) {
             case "left":
                 this.x -= 3;
                 break;
@@ -583,106 +583,106 @@ class Bolt{
                 break;
         }
 
-        if ((this.x > this.maxX) || (this.x + this.width < this.minX)){
+        if ((this.x > this.maxX) || (this.x + this.width < this.minX)) {
             this.destroy();
         }
     }
-    collide(body){
-         if (
+    collide(body) {
+        if (
             (body.x + body.width > this.x + 15) &&
             (body.x < this.x + this.width - 15) &&
             (body.y + body.height > this.y) &&
             (body.y < this.y + this.height)
-        ){
+        ) {
             this.destroy();
 
             game.player.destroy();
         }
     }
-    destroy(){
+    destroy() {
         let index = game.bolts.indexOf(this);
 
-        for (let i in game.bolts){
-            if (parseInt(i) === index){
+        for (let i in game.bolts) {
+            if (parseInt(i) === index) {
                 game.bolts.splice(index, 1);
             }
         }
     }
-    render(){
+    render() {
         game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 }
 
-class Mushroom{
-    constructor(img, x, y, width, height){
+class Mushroom {
+    constructor(img, x, y, width, height) {
         this.img = img;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
     }
-    collide(body){
-         if (
+    collide(body) {
+        if (
             (body.x + body.width > this.x) &&
             (body.x < this.x + this.width) &&
             (body.y + body.height > this.y) &&
             (body.y < this.y + this.height)
-        ){
+        ) {
             this.destroy();
         }
     }
-    destroy(){
+    destroy() {
         let index = game.mushrooms.indexOf(this);
 
-        for (let i in game.mushrooms){
-            if (parseInt(i) === index){
+        for (let i in game.mushrooms) {
+            if (parseInt(i) === index) {
                 game.mushrooms.splice(index, 1);
 
                 ++game.mushroomsCollected;
             }
         }
     }
-    render(){
+    render() {
         game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 }
 
-class Diamond{
-    constructor(img, x, y, width, height){
+class Diamond {
+    constructor(img, x, y, width, height) {
         this.img = img;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
     }
-    collide(body){
-         if (
+    collide(body) {
+        if (
             (body.x + body.width > this.x + 10) &&
             (body.x < this.x + this.width - 10) &&
             (body.y + body.height > this.y) &&
             (body.y < this.y + this.height)
-        ){
+        ) {
             this.destroy();
         }
     }
-    destroy(){
+    destroy() {
         let index = game.diamonds.indexOf(this);
 
-        for (let i in game.diamonds){
-            if (parseInt(i) === index){
+        for (let i in game.diamonds) {
+            if (parseInt(i) === index) {
                 game.diamonds.splice(index, 1);
 
                 ++game.points;
             }
         }
     }
-    render(){
+    render() {
         game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 }
 
-class Tilemap{
-    constructor(img, mapX, mapY, mapWidth, mapHeight, tileSize, scale){
+class Tilemap {
+    constructor(img, mapX, mapY, mapWidth, mapHeight, tileSize, scale) {
         this.img = img;
         this.mapX = mapX;
         this.mapY = mapY;
@@ -691,17 +691,17 @@ class Tilemap{
         this.tileSize = tileSize;
         this.scale = scale;
 
-        this.newMapWidth = this.mapWidth*this.scale;
-        this.newMapHeight = this.mapHeight*this.scale;
-        this.newTileSize = this.tileSize*this.scale;
+        this.newMapWidth = this.mapWidth * this.scale;
+        this.newMapHeight = this.mapHeight * this.scale;
+        this.newTileSize = this.tileSize * this.scale;
     }
-    render(){
+    render() {
         game.ctx.drawImage(this.img, this.mapX, this.mapY, this.newMapWidth, this.newMapHeight);
     }
 }
 
-class Platforms{
-    constructor(tileArray){
+class Platforms {
+    constructor(tileArray) {
         this.mapX = game.tilemap.mapX;
         this.mapY = game.tilemap.mapY;
         this.mapWidth = game.tilemap.newMapWidth;
@@ -710,25 +710,25 @@ class Platforms{
 
         this.tiles = tileArray;
     }
-    collide(body){
+    collide(body) {
         let tileIndex = 0;
 
-        for (let y = 0; y < this.mapHeight; y += this.tileSize){
-            for (let x = 0; x < this.mapWidth; x += this.tileSize){
-                 let tile = this.tiles[tileIndex];
+        for (let y = 0; y < this.mapHeight; y += this.tileSize) {
+            for (let x = 0; x < this.mapWidth; x += this.tileSize) {
+                let tile = this.tiles[tileIndex];
 
-                 let tileX = this.mapX + x;
-                 let tileY = this.mapY + y;
-                 let tileSize = this.tileSize;
+                let tileX = this.mapX + x;
+                let tileY = this.mapY + y;
+                let tileSize = this.tileSize;
 
-                 if (tile != 0){
+                if (tile != 0) {
                     if (
                         (body.x + body.width) > (tileX + 5) &&
                         (body.x) < (tileX + tileSize - 5) &&
                         (body.y + body.height) < (tileY + tileSize) &&
                         (body.y + body.height) > (tileY) &&
                         (body.vy > 0)
-                    ){
+                    ) {
                         body.stand(tileY);
                     }
                     if (
@@ -737,7 +737,7 @@ class Platforms{
                         (body.y) < (tileY + tileSize - 5) &&
                         (body.y) > (tileY) &&
                         (body.vy < 0)
-                    ){
+                    ) {
                         body.bumpUp(tileY, tileSize);
                     }
                     if (
@@ -746,7 +746,7 @@ class Platforms{
                         (body.x + body.width) < (tileX) &&
                         (body.x + body.width) > (tileX - 4.5) &&
                         (body.vx > 0)
-                    ){
+                    ) {
                         body.bumpRight(tileX);
                     }
                     if (
@@ -755,18 +755,18 @@ class Platforms{
                         (body.x) < (tileX + tileSize + 4.5) &&
                         (body.x) > (tileX + tileSize) &&
                         (body.vx < 0)
-                    ){
+                    ) {
                         body.bumpLeft(tileX, tileSize);
                     }
                 }
-                 ++tileIndex;
+                ++tileIndex;
             }
         }
     }
 }
 
-class Spikes{
-    constructor(tileArray){
+class Spikes {
+    constructor(tileArray) {
         this.mapX = game.tilemap.mapX;
         this.mapY = game.tilemap.mapY;
         this.mapWidth = game.tilemap.newMapWidth;
@@ -775,35 +775,35 @@ class Spikes{
 
         this.tiles = tileArray;
     }
-    collide(body){
+    collide(body) {
         let tileIndex = 0;
 
-        for (let y = 0; y < this.mapHeight; y += this.tileSize){
-            for (let x = 0; x < this.mapWidth; x += this.tileSize){
-                 let tile = this.tiles[tileIndex];
+        for (let y = 0; y < this.mapHeight; y += this.tileSize) {
+            for (let x = 0; x < this.mapWidth; x += this.tileSize) {
+                let tile = this.tiles[tileIndex];
 
-                 let tileX = this.mapX + x;
-                 let tileY = this.mapY + y;
-                 let tileSize = this.tileSize;
+                let tileX = this.mapX + x;
+                let tileY = this.mapY + y;
+                let tileSize = this.tileSize;
 
-                 if (tile != 0){
-                     if (
+                if (tile != 0) {
+                    if (
                         (body.x + body.width > tileX + 10) &&
                         (body.x < tileX + tileSize - 10) &&
                         (body.y + body.height > tileY + 22) &&
                         (body.y < tileY + tileSize - 27)
-                    ){
+                    ) {
                         game.player.destroy();
                     }
                 }
-                 ++tileIndex;
+                ++tileIndex;
             }
         }
     }
 }
 
-class Jumpers{
-    constructor(tileArray){
+class Jumpers {
+    constructor(tileArray) {
         this.mapX = game.tilemap.mapX;
         this.mapY = game.tilemap.mapY;
         this.mapWidth = game.tilemap.newMapWidth;
@@ -812,36 +812,36 @@ class Jumpers{
 
         this.tiles = tileArray;
     }
-    collide(body){
+    collide(body) {
         let tileIndex = 0;
 
-        for (let y = 0; y < this.mapHeight; y += this.tileSize){
-            for (let x = 0; x < this.mapWidth; x += this.tileSize){
-                 let tile = this.tiles[tileIndex];
+        for (let y = 0; y < this.mapHeight; y += this.tileSize) {
+            for (let x = 0; x < this.mapWidth; x += this.tileSize) {
+                let tile = this.tiles[tileIndex];
 
-                 let tileX = this.mapX + x;
-                 let tileY = this.mapY + y;
-                 let tileSize = this.tileSize;
+                let tileX = this.mapX + x;
+                let tileY = this.mapY + y;
+                let tileSize = this.tileSize;
 
-                 if (tile != 0){
-                     if (
+                if (tile != 0) {
+                    if (
                         (body.x + body.width > tileX) &&
                         (body.x < tileX + tileSize) &&
                         (body.y + body.height > tileY) &&
                         (body.y < tileY + tileSize)
-                    ){
+                    ) {
                         body.jumping = false;
                         body.highJump();
                     }
                 }
-                 ++tileIndex;
+                ++tileIndex;
             }
         }
     }
 }
 
-class Portal{
-    constructor(img, x, y, width, height, flipped){
+class Portal {
+    constructor(img, x, y, width, height, flipped) {
         this.img = img;
         this.x = x;
         this.y = y;
@@ -849,43 +849,43 @@ class Portal{
         this.height = height;
         this.flipped = flipped;
 
-        if (this.flipped){
+        if (this.flipped) {
             this.flipX = true;
         }
-        else{
+        else {
             this.flipX = false;
         }
         this.flipY = false;
 
         this.sprite = new Sprite(64, 64, 0, 0, 7, 7);
     }
-    collide(body){
-         if (
+    collide(body) {
+        if (
             (body.x + body.width > this.x + 70) &&
             (body.x < this.x + this.width - 70) &&
             (body.y + body.height > this.y + 50) &&
             (body.y < this.y + this.height - 50)
-        ){
-            if (game.mushroomsCollected === 5){
+        ) {
+            if (game.mushroomsCollected === 5) {
                 game.nextLevel();
             }
-            else{
+            else {
                 game.notifyMushrooms(this.x, this.width);
             }
         }
     }
-    respawn(){
+    respawn() {
         this.x = game.portalConfig[game.levelCode].x;
         this.y = game.portalConfig[game.levelCode].y;
         this.flipX = game.portalConfig[game.levelCode].flipped;
     }
-    render(){
+    render() {
         this.sprite.animate(this.img, this.x, this.y, this.width, this.height, this.flipX, this.flipY);
     }
 }
 
-class Game{
-    main(){
+class Game {
+    main() {
         this.canvas = document.querySelector("#game");
         this.ctx = this.canvas.getContext("2d", {
             alpha: false,
@@ -894,19 +894,19 @@ class Game{
         this.canvas.width = 400;
         this.canvas.height = 600;
 
-        this.ratio = 2/3;
+        this.ratio = 2 / 3;
 
         this.frame = {
             current: 0,
             update: () => {
-                if (this.frame.current > 999){
+                if (this.frame.current > 999) {
                     this.frame.current = 0;
                 }
                 ++this.frame.current;
             }
         }
     }
-    setup(){
+    setup() {
         this.initVariables();
         this.generatelevel();
         this.generateSlimes();
@@ -923,7 +923,7 @@ class Game{
         this.intializeControls();
         this.loop();
     }
-    initVariables(){
+    initVariables() {
         this.gravity = 0.5;
 
         this.initPoints = 0;
@@ -938,7 +938,7 @@ class Game{
 
         this.paused = false;
     }
-    generatelevel(){
+    generatelevel() {
         this.background = new Background(this.assets[`bg${this.level}Img`].img, 0, 0, 1680, 1110);
 
         this.tilemap = new Tilemap(this.assets[`level${this.level}Img`].img, 0, 50, 560, 320, 8, 3);
@@ -949,7 +949,7 @@ class Game{
 
         this.jumpers = new Jumpers(this.data[this.levelCode].jumpers);
     }
-    generateSlimes(){
+    generateSlimes() {
         this.slimeConfig = {
             level1: [
                 {
@@ -1038,13 +1038,13 @@ class Game{
         };
         this.slimes = new Array();
 
-        for (let i of this.slimeConfig[this.levelCode]){
+        for (let i of this.slimeConfig[this.levelCode]) {
             let slime = new Slime(this.assets.slimeImg.img, i.x, i.y, 50, 50, i.start, i.stop);
 
             this.slimes.push(slime);
         }
     }
-    generateEaters(){
+    generateEaters() {
         this.eaterConfig = {
             level1: [
                 {
@@ -1099,13 +1099,13 @@ class Game{
         };
         this.eaters = new Array();
 
-        for (let i of this.eaterConfig[this.levelCode]){
+        for (let i of this.eaterConfig[this.levelCode]) {
             let eater = new Eater(this.assets.eaterImg.img, i.x, i.y, 100, 70);
 
             this.eaters.push(eater);
         }
     }
-    generateGhosts(){
+    generateGhosts() {
         this.ghostConfig = {
             level1: [
                 {
@@ -1162,13 +1162,13 @@ class Game{
         this.ghosts = new Array();
         this.bolts = new Array();
 
-        for (let i of this.ghostConfig[this.levelCode]){
+        for (let i of this.ghostConfig[this.levelCode]) {
             let ghost = new Ghost(this.assets.ghostImg.img, i.x, i.y, 110, 85, i.flipped);
 
             this.ghosts.push(ghost);
         }
     }
-    generateMushrooms(){
+    generateMushrooms() {
         this.mushroomConfig = {
             level1: [
                 {
@@ -1239,13 +1239,13 @@ class Game{
         };
         this.mushrooms = new Array();
 
-        for (let i of this.mushroomConfig[this.levelCode]){
+        for (let i of this.mushroomConfig[this.levelCode]) {
             let mushroom = new Mushroom(this.assets.mushroomImg.img, i.x, i.y, 25, 25);
 
             this.mushrooms.push(mushroom);
         }
     }
-    generateDiamonds(){
+    generateDiamonds() {
         this.diamondConfig = {
             level1: [
                 {
@@ -1464,7 +1464,7 @@ class Game{
                 },
                 {
                     x: 100,
-                    y: 100 
+                    y: 100
                 },
                 {
                     x: 160,
@@ -1640,13 +1640,13 @@ class Game{
         };
         this.diamonds = new Array();
 
-        for (let i of this.diamondConfig[this.levelCode]){
+        for (let i of this.diamondConfig[this.levelCode]) {
             let diamond = new Diamond(this.assets.diamondImg.img, i.x, i.y, 33.5, 20.5);
 
             this.diamonds.push(diamond);
-        }        
+        }
     }
-    generatePortal(){
+    generatePortal() {
         this.portalConfig = {
             level1: {
                 x: 1570,
@@ -1667,7 +1667,7 @@ class Game{
 
         this.portal = new Portal(this.assets.portalImg.img, this.portalConfig[this.levelCode].x, this.portalConfig[this.levelCode].y, 140, 130, this.portalConfig[this.levelCode].flipped);
     }
-    generatePlayer(){
+    generatePlayer() {
         this.playerConfig = {
             level1: {
                 x: 50,
@@ -1688,7 +1688,7 @@ class Game{
 
         this.player = new Player(this.assets.playerImg.img, this.playerConfig[this.levelCode].x, this.playerConfig[this.levelCode].y, 45, 45, this.playerConfig[this.levelCode].flipped);
     }
-    generateInfo(){
+    generateInfo() {
         this.lives = new Lives([this.assets.lives1Img.img, this.assets.lives2Img.img, this.assets.lives3Img.img], 10, 10, 100, 23);
 
         this.score = new Score(this.assets.diamondImg.img, 10, 45, 32, 18);
@@ -1697,12 +1697,12 @@ class Game{
 
         this.stage = new Stage(305, 28);
     }
-    restartGame(){
+    restartGame() {
         this.player.lives = 3;
 
         this.lives.update();
 
-        this.level =  1;
+        this.level = 1;
         this.levelCode = `level${this.level}`;
 
         this.initPoints = 0;
@@ -1729,7 +1729,7 @@ class Game{
 
         this.showStory();
     }
-    restartLevel(){
+    restartLevel() {
         this.points = this.initPoints;
         this.mushroomsCollected = 0;
 
@@ -1741,15 +1741,15 @@ class Game{
 
         this.player.respawn();
     }
-    nextLevel(){
-        if (this.level === 3){
+    nextLevel() {
+        if (this.level === 3) {
             this.player.lives = 3;
 
             this.lives.update();
-            
+
             this.notifyCompleted();
         }
-        else{
+        else {
             this.level += 1;
             this.levelCode = `level${this.level}`;
 
@@ -1776,7 +1776,7 @@ class Game{
             this.showStory();
         }
     }
-    notifyMushrooms(portalX, portalWidth){
+    notifyMushrooms(portalX, portalWidth) {
         this.paused = true;
 
         this.alert.pop({
@@ -1784,17 +1784,17 @@ class Game{
             text: "Collect all the mushrooms before going through the portal!",
             buttons: ["Okay"],
             OkayOnclick: () => {
-                if (portalX + portalWidth/2 < this.player.x + this.player.width/2){
+                if (portalX + portalWidth / 2 < this.player.x + this.player.width / 2) {
                     this.player.x += 30;
                 }
-                else{
+                else {
                     this.player.x -= 30;
                 }
                 game.paused = false;
             }
         });
     }
-    notifyCompleted(){
+    notifyCompleted() {
         this.paused = true;
 
         this.alert.pop({
@@ -1814,7 +1814,7 @@ class Game{
             }
         });
     }
-    notifyLost(){
+    notifyLost() {
         this.paused = true;
 
         this.alert.pop({
@@ -1828,7 +1828,7 @@ class Game{
             }
         });
     }
-    notifyStory(story){
+    notifyStory(story) {
         this.paused = true;
 
         this.alert.pop({
@@ -1840,8 +1840,8 @@ class Game{
             }
         });
     }
-    showStory(){
-        switch (this.level){
+    showStory() {
+        switch (this.level) {
             case 1:
                 this.story = "Your galaxy 'Titania' has been invaded by extraterrestrial creatures who want to rule it. Your fellow titatians have all died and you are the only survivor. The only option you have is to escape from the galaxy (along with some mushrooms to eat)!";
 
@@ -1857,7 +1857,7 @@ class Game{
         }
         this.notifyStory(this.story);
     }
-    showIntructions(){
+    showIntructions() {
         this.alert.pop({
             title: "Instructions",
             text: "1) You need to avoid all the enemies and find a portal to escape.\n\n2) You need to collect all the mushrooms scattered across the level to enter the portal.\n\n3) If you find small blue colored trampolines, you can stand over them to get a jump boost.\n\n4) You can gain points by collecting diamonds.\n\n5) You have total three lives. You lose the game once you run out of lives.",
@@ -1867,10 +1867,10 @@ class Game{
             }
         });
     }
-    initializeAlert(){
+    initializeAlert() {
         this.alert = new Alert();
     }
-    initializeMenu(){
+    initializeMenu() {
         this.paused = true;
 
         this.alert.pop({
@@ -1878,7 +1878,7 @@ class Game{
             text: "Ready to play?",
             buttons: ["Play", "Instructions"],
             PlayOnclick: () => {
-                if (!this.music.playing){
+                if (!this.music.playing) {
                     this.music.playing = true;
 
                     this.music.play();
@@ -1893,10 +1893,10 @@ class Game{
             }
         });
     }
-    initializeCamera(){
+    initializeCamera() {
         this.camera = new Camera();
     }
-    intializeControls(){
+    intializeControls() {
         this.leftButton = new Button(5, 20, 22.5, 15, "LEFT");
 
         this.leftButton.node.onpointerdown = () => {
@@ -1929,8 +1929,8 @@ class Game{
 
         this.buttons = [this.leftButton, this.rightButton, this.jumpButton];
     }
-    onKeyDown(e){
-        switch (e.keyCode){
+    onKeyDown(e) {
+        switch (e.keyCode) {
             case 32:
                 this.player.jump();
 
@@ -1949,8 +1949,8 @@ class Game{
                 break;
         }
     }
-    onKeyUp(e){
-        switch (e.keyCode){
+    onKeyUp(e) {
+        switch (e.keyCode) {
             case 37:
                 this.player.movingLeft = false;
 
@@ -1961,26 +1961,26 @@ class Game{
                 break;
         }
     }
-    update(){
-        for (let slime of this.slimes){
+    update() {
+        for (let slime of this.slimes) {
             slime.physics();
             slime.collide(this.player);
         }
-        for (let eater of this.eaters){
+        for (let eater of this.eaters) {
             eater.direction(this.player);
             eater.collide(this.player);
         }
-        for (let ghost of this.ghosts){
+        for (let ghost of this.ghosts) {
             ghost.shoot();
         }
-        for (let bolt of this.bolts){
+        for (let bolt of this.bolts) {
             bolt.physics();
             bolt.collide(this.player);
         }
-        for (let mushroom of this.mushrooms){
+        for (let mushroom of this.mushrooms) {
             mushroom.collide(this.player);
         }
-        for (let diamond of this.diamonds){
+        for (let diamond of this.diamonds) {
             diamond.collide(this.player);
         }
         this.player.physics();
@@ -1990,25 +1990,25 @@ class Game{
         this.jumpers.collide(this.player);
         this.frame.update();
     }
-    render(){
+    render() {
         this.background.render();
         this.tilemap.render();
-        for (let slime of this.slimes){
+        for (let slime of this.slimes) {
             slime.render();
         }
-        for (let eater of this.eaters){
+        for (let eater of this.eaters) {
             eater.render();
         }
-        for (let ghost of this.ghosts){
+        for (let ghost of this.ghosts) {
             ghost.render();
         }
-        for (let bolt of this.bolts){
+        for (let bolt of this.bolts) {
             bolt.render();
         }
-        for (let mushroom of this.mushrooms){
+        for (let mushroom of this.mushrooms) {
             mushroom.render();
         }
-        for (let diamond of this.diamonds){
+        for (let diamond of this.diamonds) {
             diamond.render();
         }
         this.portal.render();
@@ -2019,8 +2019,8 @@ class Game{
         this.mushroomCount.render();
         this.camera.follow(this.player);
     }
-    loop(){
-        if (!this.paused){
+    loop() {
+        if (!this.paused) {
             this.update();
         }
         this.render();
@@ -2029,7 +2029,7 @@ class Game{
             this.loop();
         });
     }
-    addEventListeners(){
+    addEventListeners() {
         window.onkeydown = (e) => {
             this.onKeyDown(e);
         }
@@ -2037,22 +2037,22 @@ class Game{
             this.onKeyUp(e);
         }
     }
-    resize(){
-        if (window.innerWidth/window.innerHeight < this.ratio){
+    resize() {
+        if (window.innerWidth / window.innerHeight < this.ratio) {
             this.canvas.style.width = `${window.innerWidth}px`;
-            this.canvas.style.height = `${window.innerWidth/this.ratio}px`;
+            this.canvas.style.height = `${window.innerWidth / this.ratio}px`;
         }
-        else{
-            this.canvas.style.width = `${window.innerHeight*this.ratio}px`;
+        else {
+            this.canvas.style.width = `${window.innerHeight * this.ratio}px`;
             this.canvas.style.height = `${window.innerHeight}px`;
         }
-        if (this.buttons){
-            for (let button of this.buttons){
+        if (this.buttons) {
+            for (let button of this.buttons) {
                 button.resize();
             }
         }
     }
-    load(){
+    load() {
         this.urls = {
             level1Img: "https://cdn.jsdelivr.net/gh/Quickcoder2005/Galaxy-Invaders@main/assets/maps/level1.png",
             level2Img: "https://cdn.jsdelivr.net/gh/Quickcoder2005/Galaxy-Invaders@main/assets/maps/level2.png",
@@ -2076,13 +2076,13 @@ class Game{
 
         this.urlLen = Object.keys(this.urls).length;
 
-        for (let i in this.urls){
-            fetch(this.urls[i]).then((response) => response.blob()).then(data => { 
+        for (let i in this.urls) {
+            fetch(this.urls[i]).then((response) => response.blob()).then(data => {
                 let url = URL.createObjectURL(data);
 
                 this.assets[i] = new Picture(url);
 
-                if (Object.keys(this.assets).length === this.urlLen){
+                if (Object.keys(this.assets).length === this.urlLen) {
                     fetch("https://cdn.jsdelivr.net/gh/Quickcoder2005/Galaxy-Invaders@main/assets/maps/levels.json").then((response) => response.json()).then((data) => {
                         this.data = data;
 
@@ -2093,10 +2093,10 @@ class Game{
             });
         }
     }
-    loaded(){
+    loaded() {
         document.querySelector("#loader").remove();
     }
-    init(){
+    init() {
         this.ctx.imageSmoothingEnabled = false;
 
         this.resize();

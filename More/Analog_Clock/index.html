@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>CodePen - Glassmorphism vs Neumorphism Clock | Css, JS &amp; Vanilla Tilt</title>
-  <meta charset="utf-8">
+	<meta charset="UTF-8">
+	<title>CodePen - Glassmorphism vs Neumorphism Clock | Css, JS &amp; Vanilla Tilt</title>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glassmorphism Calculator</title>
-<link rel="stylesheet" type="text/css" href="style03.css"><link rel="stylesheet" href="./style.css">
+	<title>Glassmorphism Calculator</title>
+	<link rel="stylesheet" type="text/css" href="style03.css">
+	<link rel="stylesheet" href="./style.css">
 
 </head>
+
 <body>
-<section>
+	<section>
 		<div class="wrapper">
-			<div class="container-01">	
+			<div class="container-01">
 				<div class="clock" id="clock-01">
 					<div class="hour">
 						<div class="hr" id="hr"></div>
@@ -22,7 +25,7 @@
 					</div>
 					<div class="sec">
 						<div class="sc" id="sc"></div>
-					</div>	
+					</div>
 					<div class="indicators">
 						<div></div>
 						<div></div>
@@ -36,16 +39,16 @@
 						<div></div>
 						<div></div>
 						<div></div>
-					</div>	
-				</div>			
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
 	<script type="text/javascript">
 		const deg = 6;
-		const hr = document.querySelector('#hr'); 
-		const mn = document.querySelector('#mn'); 
-		const sc = document.querySelector('#sc'); 
+		const hr = document.querySelector('#hr');
+		const mn = document.querySelector('#mn');
+		const sc = document.querySelector('#sc');
 
 		setInterval(() => {
 			let day = new Date()
@@ -53,7 +56,7 @@
 			let mm = day.getMinutes() * deg;
 			let ss = day.getSeconds() * deg;
 
-			hr.style.transform = `rotateZ(${(hh)+(mm/12)}deg)`;
+			hr.style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
 			mn.style.transform = `rotateZ(${mm}deg)`;
 			sc.style.transform = `rotateZ(${ss}deg)`;
 		});
@@ -62,19 +65,21 @@
 		const min = document.querySelector('.min-hand .min');
 		const hour = document.querySelector('.hour-hand .hr');
 
-		setInterval(function(){
+		setInterval(function () {
 			let time = new Date();
 			let secs = time.getSeconds() * 6;
-			let mins = time.getMinutes() * 6; 
+			let mins = time.getMinutes() * 6;
 			let hours = time.getHours() * 30;
 
 			sec.style.transform = `rotateZ(${secs}deg)`;
 			min.style.transform = `rotateZ(${mins}deg)`;
-			hour.style.transform = `rotateZ(${hours + (mins/12)}deg)`;
+			hour.style.transform = `rotateZ(${hours + (mins / 12)}deg)`;
 		});
 	</script>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js'></script><script  src="./script.js"></script>
+	<!-- partial -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js'></script>
+	<script src="./script.js"></script>
 
 </body>
+
 </html>

@@ -1,177 +1,173 @@
 body {
-  background: #e4ebf4;
-  padding: 2rem;
-}
-h1 {
-  font-family: sans-serif;
-  margin-left: 20%;
+	background: #e4ebf4;
+	padding: 2rem;
 }
 
-a
-{
-  color: inherit;
-  text-decoration: none;
+h1 {
+	font-family: sans-serif;
+	margin-left: 20%;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
 }
 
 .horizontal {
-  display: flex;
-  justify-content: space-evenly;
+	display: flex;
+	justify-content: space-evenly;
 }
 
 .olcards,
 .olcards * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
+
 .olcards {
-  list-style: none;
-  counter-reset: cardCount;
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  --cardsGap: 1rem;
-  gap: var(--cardsGap);
-  padding-bottom: var(--cardsGap);
+	list-style: none;
+	counter-reset: cardCount;
+	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
+	--cardsGap: 1rem;
+	gap: var(--cardsGap);
+	padding-bottom: var(--cardsGap);
 }
+
 .olcards li {
-  counter-increment: cardCount;
-  display: flex;
-  color: white;
-  --labelOffset: 1rem;
-  --arrowClipSize: 1.5rem;
-  margin-top: var(--labelOffset);
+	counter-increment: cardCount;
+	display: flex;
+	color: white;
+	--labelOffset: 1rem;
+	--arrowClipSize: 1.5rem;
+	margin-top: var(--labelOffset);
 }
 
 .olcards li::before {
-  content: counter(cardCount, decimal-leading-zero);
-  background: white;
-  color: var(--cardColor);
-  font-size: 2em;
-  font-weight: 700;
-  transform: translateY(calc(-1 * var(--labelOffset)));
-  margin-right: calc(-1 * var(--labelOffset));
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-inline: 0.5em;
+	content: counter(cardCount, decimal-leading-zero);
+	background: white;
+	color: var(--cardColor);
+	font-size: 2em;
+	font-weight: 700;
+	transform: translateY(calc(-1 * var(--labelOffset)));
+	margin-right: calc(-1 * var(--labelOffset));
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-inline: 0.5em;
 }
 
 .olcards li .content {
-  background-color: var(--cardColor);
-  --inlinePadding: 1em;
-  --boxPadding: 0.5em;
-  display: flex;
-  padding: var(--boxPadding) calc(var(--inlinePadding) + var(--arrowClipSize))
-    var(--boxPadding) calc(var(--inlinePadding) + var(--labelOffset));
-  gap: 0.25em 1em;
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--arrowClipSize)) 0,
-    100% 50%,
-    calc(100% - var(--arrowClipSize)) 100%,
-    calc(100% - var(--arrowClipSize)) calc(100% + var(--cardsGap)),
-    0 calc(100% + var(--cardsGap))
-  );
-  position: relative;
+	background-color: var(--cardColor);
+	--inlinePadding: 1em;
+	--boxPadding: 0.5em;
+	display: flex;
+	padding: var(--boxPadding) calc(var(--inlinePadding) + var(--arrowClipSize)) var(--boxPadding) calc(var(--inlinePadding) + var(--labelOffset));
+	gap: 0.25em 1em;
+	clip-path: polygon(0 0,
+			calc(100% - var(--arrowClipSize)) 0,
+			100% 50%,
+			calc(100% - var(--arrowClipSize)) 100%,
+			calc(100% - var(--arrowClipSize)) calc(100% + var(--cardsGap)),
+			0 calc(100% + var(--cardsGap)));
+	position: relative;
 }
 
 
 
 
 .olcards li .content::before {
-  content: "";
-  position: absolute;
-  width: var(--labelOffset);
-  height: var(--labelOffset);
-  background: var(--cardColor);
-  left: 0;
-  bottom: 0;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-  filter: brightness(0.75);
+	content: "";
+	position: absolute;
+	width: var(--labelOffset);
+	height: var(--labelOffset);
+	background: var(--cardColor);
+	left: 0;
+	bottom: 0;
+	clip-path: polygon(0 0, 100% 0, 0 100%);
+	filter: brightness(0.75);
 }
 
 .olcards li .content::after {
-  content: "";
-  position: absolute;
-  height: var(--cardsGap);
-  width: var(--cardsGap);
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent 50%);
-  left: 0;
-  top: 100%;
+	content: "";
+	position: absolute;
+	height: var(--cardsGap);
+	width: var(--cardsGap);
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent 50%);
+	left: 0;
+	top: 100%;
 }
 
 
-.window{
+.window {
 	background-color: #29467a;
-	outline:12px solid #2d2623;
-	border-left:5px solid #439abf ;
-	border-right:5px solid #439abf ;
+	outline: 12px solid #2d2623;
+	border-left: 5px solid #439abf;
+	border-right: 5px solid #439abf;
 	width: 250px;
 	height: 390px;
 	position: relative;
-	top:20px;
-	left:45px;
+	top: 20px;
+	left: 45px;
 }
-.br{
+
+.br {
 	background-color: #2d2623;
 	height: 10px;
 	width: 270px;
 	position: relative;
 	right: 10px;
-	top:200px;
+	top: 200px;
 }
-.br1{
+
+.br1 {
 	background-color: #439abf;
 	height: 5px;
 	width: 255px;
 	position: relative;
 	bottom: 5px;
-	left:10px;
+	left: 10px;
 }
-.light{
+
+.light {
 	background-color: #29467a;
 	height: 5px;
 	position: relative;
-	
-	
+
+
 }
-.btm{
-	width:310px;
+
+.btm {
+	width: 310px;
 	height: 15px;
-	background-color:  #2d2623 ;
+	background-color: #2d2623;
 	position: relative;
-	right:30px;
-	top:380px;
+	right: 30px;
+	top: 380px;
 }
-.light1{
+
+.light1 {
 	height: 5px;
 	width: 280px;
-	left:15px;
-	background-color:#439abf;
-	position: relative; 
+	left: 15px;
+	background-color: #439abf;
+	position: relative;
 }
-.m1{
+
+.m1 {
 	height: 0;
 	width: 0;
 
 	border-bottom: 60px solid #22366d;
 	border-right: 20px solid transparent;
 	position: relative;
-	top:305px;
+	top: 305px;
 }
-.m2{
-	height: 0;
-	width: 0;
 
-	border-bottom: 60px solid #22366d;
-	border-right: 20px solid transparent;
-	border-left: 20px solid transparent;
-	position: relative;
-	left:5px;
-}
-.m3{
+.m2 {
 	height: 0;
 	width: 0;
 
@@ -179,10 +175,10 @@ a
 	border-right: 20px solid transparent;
 	border-left: 20px solid transparent;
 	position: relative;
-	left:35px;
-	bottom:60px;
+	left: 5px;
 }
-.m4{
+
+.m3 {
 	height: 0;
 	width: 0;
 
@@ -190,10 +186,23 @@ a
 	border-right: 20px solid transparent;
 	border-left: 20px solid transparent;
 	position: relative;
-	left:195px;
-	top:245px;
+	left: 35px;
+	bottom: 60px;
 }
-.m5{
+
+.m4 {
+	height: 0;
+	width: 0;
+
+	border-bottom: 60px solid #22366d;
+	border-right: 20px solid transparent;
+	border-left: 20px solid transparent;
+	position: relative;
+	left: 195px;
+	top: 245px;
+}
+
+.m5 {
 	height: 0;
 	width: 0;
 
@@ -201,130 +210,154 @@ a
 
 	border-left: 20px solid transparent;
 	position: relative;
-	left:15px;
-	bottom:0px;
+	left: 15px;
+	bottom: 0px;
 }
-.kitty{
+
+.kitty {
 	background-color: #2d2623;
 	height: 140px;
 	width: 50px;
 	position: relative;
-	top:120px;
-	left:90px;
+	top: 120px;
+	left: 90px;
 	border-radius: 40px 40px 0 0;
 }
-.earl{
+
+.earl {
 	height: 0;
 	width: 0;
 	border-bottom: 40px solid #2d2623;
 	border-right: 33px solid transparent;
 	position: relative;
-	bottom: 12px; 
+	bottom: 12px;
 }
-.earr{
+
+.earr {
 	height: 0;
 	width: 0;
 	border-bottom: 40px solid #2d2623;
 	border-left: 33px solid transparent;
 	position: relative;
 	bottom: 53px;
-	left:17px; 
+	left: 17px;
 }
-.body{
+
+.body {
 	background-color: #2d2623;
 	height: 80px;
 	width: 40px;
 	border-radius: 0 80px 80px 0;
 	bottom: 20px;
-	left:43px;
+	left: 43px;
 	position: relative;
 }
-.tail{
-	background-color:#2d2623;
+
+.tail {
+	background-color: #2d2623;
 	height: 80px;
 	width: 10px;
 	border-radius: 5px;
 	position: relative;
-	top:65px;
-	left:12px;
-	transform:rotate(-15deg);
-	transform-origin: top; 
-	animation:tail 4s infinite; 
-	-webkit-transform:rotate(-15deg);
-	-webkit-transform-origin: top; 
-	-webkit-animation:tail 4s infinite; 
+	top: 65px;
+	left: 12px;
+	transform: rotate(-15deg);
+	transform-origin: top;
+	animation: tail 4s infinite;
+	-webkit-transform: rotate(-15deg);
+	-webkit-transform-origin: top;
+	-webkit-animation: tail 4s infinite;
 }
-@keyframes tail{
-	50%{
-			transform: rotate(10deg); 
+
+@keyframes tail {
+	50% {
+		transform: rotate(10deg);
 	}
 }
-@-webkit-keyframes tail{
-	50%{
-			-webkit-transform: rotate(10deg); 
+
+@-webkit-keyframes tail {
+	50% {
+		-webkit-transform: rotate(10deg);
 	}
 }
-.moon{
+
+.moon {
 	height: 80px;
 	width: 80px;
 	border-radius: 50%;
 	background-color: transparent;
-	box-shadow:-15px 8px 0 1px #e8ae4a;
+	box-shadow: -15px 8px 0 1px #e8ae4a;
 	position: relative;
 	bottom: 260px;
-	left:50px;
+	left: 50px;
 }
-.st1,.st2,.st3,.st4,.st5,.st6,.st7,.st8{
-background-color: #e8ae4a;
-height: 7px;
-width: 7px;
-border-radius: 50%;
-position: relative;
-animation: twinkle 2s infinite;
--webkit-animation: twinkle 2s infinite;
-}    
-@keyframes twinkle
-{
-50%{
-	box-shadow: 0 0 15px 1px rgba(232, 174, 74,0.5);
+
+.st1,
+.st2,
+.st3,
+.st4,
+.st5,
+.st6,
+.st7,
+.st8 {
+	background-color: #e8ae4a;
+	height: 7px;
+	width: 7px;
+	border-radius: 50%;
+	position: relative;
+	animation: twinkle 2s infinite;
+	-webkit-animation: twinkle 2s infinite;
 }
+
+@keyframes twinkle {
+	50% {
+		box-shadow: 0 0 15px 1px rgba(232, 174, 74, 0.5);
+	}
 }
-@-webkit-keyframes twinkle
-{
-50%{
-	box-shadow: 0 0 15px 1px rgba(232, 174, 74,0.5);
+
+@-webkit-keyframes twinkle {
+	50% {
+		box-shadow: 0 0 15px 1px rgba(232, 174, 74, 0.5);
+	}
 }
+
+.st1 {
+	bottom: 230px;
+	left: 30px;
 }
-.st1{
-bottom: 230px;
-left:30px;
+
+.st2 {
+	bottom: 55px;
+	left: 170px;
 }
-.st2{
-bottom: 55px;
-left:170px;
-}
-.st3{
-bottom:120px;
-left:40px;
+
+.st3 {
+	bottom: 120px;
+	left: 40px;
 
 }
-.st4{
-bottom:350px;
-left:220px; 
+
+.st4 {
+	bottom: 350px;
+	left: 220px;
 }
-.st5{
-bottom: 155px;
-left:200px;
+
+.st5 {
+	bottom: 155px;
+	left: 200px;
 }
-.st6{
-bottom: 240px;
-left:100px;
+
+.st6 {
+	bottom: 240px;
+	left: 100px;
 }
-.st7{
-bottom: 340px;
-left:140px;
+
+.st7 {
+	bottom: 340px;
+	left: 140px;
 }
-.st8{
-bottom: 235px;
-left:200px;
+
+.st8 {
+	bottom: 235px;
+	left: 200px;
 }

@@ -9,12 +9,12 @@ var board = [
 ];
 var computer = {};
 var player = {};
-var winDetails = { 
+var winDetails = {
     winner: null,
     cellCoords_1: "",
     cellCoords_2: "",
     cellCoords_3: "",
-    setDefault: function(){
+    setDefault: function () {
         this.winner = null;
         this.cellCoords_1 = "";
         this.cellCoords_2 = "";
@@ -22,38 +22,38 @@ var winDetails = {
     }
 };
 
-$(function() {
+$(function () {
     $("#playModal").modal({ backdrop: "static", keyboard: false });
-    
-    $("body").on("click", ".btn-marker-select", function() {
+
+    $("body").on("click", ".btn-marker-select", function () {
         var marker = $(this).data("marker");
-        if(marker === 'O'){
+        if (marker === 'O') {
             displayThinking();
-            setTimeout(function() {
+            setTimeout(function () {
                 startGame(marker);
             }, 1912);
         } else
             startGame(marker);
     });
-    
-    $(".square").click(function() {
-        if(!$('.loader').is(':visible')){
-            if(winDetails.winner == null && player.turn){
+
+    $(".square").click(function () {
+        if (!$('.loader').is(':visible')) {
+            if (winDetails.winner == null && player.turn) {
                 var playCoord_X = parseInt($(this).data('x-coord'));
                 var playCoord_Y = parseInt($(this).data('y-coord'));
-                if(board[playCoord_Y][playCoord_X] === ""){
+                if (board[playCoord_Y][playCoord_X] === "") {
                     board[playCoord_Y][playCoord_X] = player.marker;
                     $(this).append('<div class="text-center">' + player.marker + "</div>");
                     evaluate();
-                    if(winDetails.winner != null)
+                    if (winDetails.winner != null)
                         presentWin("player");
-                    if(isDraw())
+                    if (isDraw())
                         presentDraw();
-                    if(winDetails.winner == null & !isDraw()) {
-                        setTimeout(function() {
+                    if (winDetails.winner == null & !isDraw()) {
+                        setTimeout(function () {
                             displayThinking();
                         }, 150);
-                        setTimeout(function() {
+                        setTimeout(function () {
                             player.turn = false;
                             computer.turn = true;
                             computer.move();
@@ -63,12 +63,12 @@ $(function() {
             }
         }
     });
-    
-    $("body").on("click", ".modal-close", function() {
+
+    $("body").on("click", ".modal-close", function () {
         $("#resetContainer").toggleClass("hidden");
     });
-    
-    $("body").on("click", "#btn_Reset", function() {
+
+    $("body").on("click", "#btn_Reset", function () {
         $("#resetContainer").toggleClass("hidden");
         reset();
     });
@@ -90,7 +90,7 @@ function startGame(marker) {
     computer = {
         turn: marker === "O",
         marker: marker === "X" ? "O" : "X",
-        move: function() {
+        move: function () {
             var playCoords = getNextMove().split(", ");
             var x = playCoords[0];
             var y = playCoords[1];
@@ -101,9 +101,9 @@ function startGame(marker) {
             this.turn = false;
             player.turn = true;
             evaluate();
-            if(winDetails.winner != null)
+            if (winDetails.winner != null)
                 presentWin("machine");
-            if(isDraw())
+            if (isDraw())
                 presentDraw();
         }
     };
@@ -115,15 +115,15 @@ function startGame(marker) {
 function getNextMove() {
     var playCoords = boardIsEmpty()
         ? Math.floor(Math.random() * board.length) +
-          ", " +
-          Math.floor(Math.random() * board.length)
+        ", " +
+        Math.floor(Math.random() * board.length)
         : checkRowsForWinPlay();
     return playCoords;
 }
 
 function boardIsEmpty() {
     return (
-        [].concat.apply([], board).filter(function(s) {
+        [].concat.apply([], board).filter(function (s) {
             return s !== "";
         }).length === 0
     );
@@ -131,7 +131,7 @@ function boardIsEmpty() {
 
 function checkRowsForWinPlay() {
     var playCoords = "";
-    var winRows = board.filter(function(r) {
+    var winRows = board.filter(function (r) {
         return (
             (r[0] !== "" && r[0] !== player.marker && r[0] === r[1] && r[2] === "") ||
             (r[0] !== "" && r[0] !== player.marker && r[0] === r[2] && r[1] === "") ||
@@ -147,12 +147,12 @@ function checkRowsForWinPlay() {
 function checkColsForWinPlay() {
     var playCoords = "";
     var cols = getColumns()
-    var winCols = cols.filter(function(c) {
-       return (
-           (c[0] !== "" && c[0] !== player.marker && c[0] === c[1] && c[2] === "") ||
-           (c[0] !== "" && c[0] !== player.marker && c[0] === c[2] && c[1] === "") ||
-           (c[1] !== "" && c[1] !== player.marker && c[1] === c[2] && c[0] === "")
-       );
+    var winCols = cols.filter(function (c) {
+        return (
+            (c[0] !== "" && c[0] !== player.marker && c[0] === c[1] && c[2] === "") ||
+            (c[0] !== "" && c[0] !== player.marker && c[0] === c[2] && c[1] === "") ||
+            (c[1] !== "" && c[1] !== player.marker && c[1] === c[2] && c[0] === "")
+        );
     });
     if (winCols.length === 0) return checkDiagsForWinPlay();
     playCoords = cols.indexOf(winCols[0]) + ", " + winCols[0].indexOf("");
@@ -164,35 +164,35 @@ function checkDiagsForWinPlay() {
     var flatBoard = getFlattenedBoard();
     var ulDiag = [];
     var llDiag = [];
-    for(var i = 0; i < flatBoard.length; i++){
-        if(i % 4 === 0){
+    for (var i = 0; i < flatBoard.length; i++) {
+        if (i % 4 === 0) {
             ulDiag.push(flatBoard[i]);
         }
     }
-    if(ulDiag.indexOf(player.marker) > -1 || ulDiag.filter(function(s){return s !== '' && s !== player.marker;}).join('').length !== 2){
+    if (ulDiag.indexOf(player.marker) > -1 || ulDiag.filter(function (s) { return s !== '' && s !== player.marker; }).join('').length !== 2) {
         flatBoard.shift();
         flatBoard.shift();
         flatBoard.pop();
         flatBoard.pop();
-        for(var i = 0; i < flatBoard.length; i++){
-            if(i % 2 === 0){
+        for (var i = 0; i < flatBoard.length; i++) {
+            if (i % 2 === 0) {
                 llDiag.push(flatBoard[i]);
             }
         }
-        if(llDiag.indexOf(player.marker) === -1 && llDiag.filter(function(s){return s !== "" && s !== player.marker;}).join('').length === 2){
+        if (llDiag.indexOf(player.marker) === -1 && llDiag.filter(function (s) { return s !== "" && s !== player.marker; }).join('').length === 2) {
             playCoords = getBlankDiagCoords(llDiag, "ll");
         }
-    } else{
+    } else {
         playCoords = getBlankDiagCoords(ulDiag, "ul");
     }
-    if(playCoords === "") return checkForDefensive();
+    if (playCoords === "") return checkForDefensive();
     return playCoords;
 }
 
-function getBlankDiagCoords(diag, dir){
+function getBlankDiagCoords(diag, dir) {
     var playCoords = "";
     var blankIndex = diag.indexOf("");
-    switch(blankIndex){
+    switch (blankIndex) {
         case 0:
             playCoords = dir === "ul" ? "0, 0" : "2, 0";
             break;
@@ -208,48 +208,48 @@ function getBlankDiagCoords(diag, dir){
     return playCoords;
 }
 
-function checkForDefensive(){
+function checkForDefensive() {
     var playCoords = "";
-    var riskRows = board.filter(function(r) {
+    var riskRows = board.filter(function (r) {
         return (
             (r[0] === player.marker && r[0] === r[1] && r[2] === "") ||
             (r[0] === player.marker && r[0] === r[2] && r[1] === "") ||
             (r[1] === player.marker && r[1] === r[2] && r[0] === "")
         );
     });
-    if(riskRows.length === 0){
+    if (riskRows.length === 0) {
         var cols = getColumns();
-        var riskCols = cols.filter(function(c) {
-           return (
-               (c[0] === player.marker && c[0] === c[1] && c[2] === "") ||
-               (c[0] === player.marker && c[0] === c[2] && c[1] === "") ||
-               (c[1] === player.marker && c[1] === c[2] && c[0] === "")
-           );
+        var riskCols = cols.filter(function (c) {
+            return (
+                (c[0] === player.marker && c[0] === c[1] && c[2] === "") ||
+                (c[0] === player.marker && c[0] === c[2] && c[1] === "") ||
+                (c[1] === player.marker && c[1] === c[2] && c[0] === "")
+            );
         });
-        if(riskCols.length === 0){
+        if (riskCols.length === 0) {
             var playCoords = "";
             var flatBoard = getFlattenedBoard();
             var ulDiag = [];
             var llDiag = [];
-            for(var i = 0; i < flatBoard.length; i++){
-                if(i % 4 === 0){
+            for (var i = 0; i < flatBoard.length; i++) {
+                if (i % 4 === 0) {
                     ulDiag.push(flatBoard[i]);
                 }
             }
-            if(ulDiag.indexOf(computer.marker) > -1 || ulDiag.filter(function(s){return s === player.marker;}).join('').length !== 2){
+            if (ulDiag.indexOf(computer.marker) > -1 || ulDiag.filter(function (s) { return s === player.marker; }).join('').length !== 2) {
                 flatBoard.shift();
                 flatBoard.shift();
                 flatBoard.pop();
                 flatBoard.pop();
-                for(var i = 0; i < flatBoard.length; i++){
-                    if(i % 2 === 0){
+                for (var i = 0; i < flatBoard.length; i++) {
+                    if (i % 2 === 0) {
                         llDiag.push(flatBoard[i]);
                     }
                 }
-                if(llDiag.indexOf("") > -1 && llDiag.filter(function(s){return s == player.marker;}).join('').length === 2){
+                if (llDiag.indexOf("") > -1 && llDiag.filter(function (s) { return s == player.marker; }).join('').length === 2) {
                     playCoords = getBlankDiagCoords(llDiag, "ll");
                 }
-            } else{
+            } else {
                 playCoords = getBlankDiagCoords(ulDiag, "ul");
             }
         } else {
@@ -258,90 +258,90 @@ function checkForDefensive(){
     } else {
         playCoords = riskRows[0].indexOf("") + ", " + board.indexOf(riskRows[0]);
     }
-    if(playCoords === "") return checkForClearDrive();
+    if (playCoords === "") return checkForClearDrive();
     return playCoords;
 }
 
-function checkForClearDrive(){
+function checkForClearDrive() {
     var playCoords = "";
-    var buildRows = board.filter(function(r){
+    var buildRows = board.filter(function (r) {
         return r.indexOf(player.marker) === -1 && r.indexOf(computer.marker) > -1;
     });
-    if(buildRows.length > 0)
-        playCoords = buildRows[0].indexOf("") +", " + board.indexOf(buildRows[0]);
+    if (buildRows.length > 0)
+        playCoords = buildRows[0].indexOf("") + ", " + board.indexOf(buildRows[0]);
     else {
         var cols = getColumns();
-        var buildCols = cols.filter(function(c){
+        var buildCols = cols.filter(function (c) {
             return c.indexOf(player.marker) === -1 && c.indexOf(computer.marker) > -1;
         });
-        if(buildCols.length > 0)
+        if (buildCols.length > 0)
             playCoords = cols.indexOf(buildCols[0]) + ", " + buildCols[0].indexOf("");
         else {
             var flatBoard = getFlattenedBoard();
             var ulDiag = [];
             var llDiag = [];
-            for(var i = 0; i < flatBoard.length; i++){
-                if(i % 4 === 0){
+            for (var i = 0; i < flatBoard.length; i++) {
+                if (i % 4 === 0) {
                     ulDiag.push(flatBoard[i]);
                 }
             }
-            if(ulDiag.indexOf(player.marker) !== -1 || ulDiag.indexOf(computer.marker) === -1){
+            if (ulDiag.indexOf(player.marker) !== -1 || ulDiag.indexOf(computer.marker) === -1) {
                 flatBoard.shift();
                 flatBoard.shift();
                 flatBoard.pop();
                 flatBoard.pop();
-                for(var i = 0; i < flatBoard.length; i++){
-                    if(i % 2 === 0){
+                for (var i = 0; i < flatBoard.length; i++) {
+                    if (i % 2 === 0) {
                         llDiag.push(flatBoard[i]);
                     }
                 }
-                if(llDiag.indexOf(player.marker) === -1 && llDiag.indexOf(computer.marker) !== -1){
+                if (llDiag.indexOf(player.marker) === -1 && llDiag.indexOf(computer.marker) !== -1) {
                     playCoords = getBlankDiagCoords(llDiag, "ll");
                 }
             } else
                 playCoords = getBlankDiagCoords(ulDiag, "ul");
         }
     }
-    if(playCoords === "") return playBlank();
+    if (playCoords === "") return playBlank();
     return playCoords;
 }
 
 function playBlank() {
     var playCoords = "";
-    var rowsWithBlanks = board.filter(function(r){
+    var rowsWithBlanks = board.filter(function (r) {
         return r.indexOf("") > -1;
     });
-    if(rowsWithBlanks.length > 0){
+    if (rowsWithBlanks.length > 0) {
         var rdmIndex = Math.floor(Math.random() * rowsWithBlanks.length);
         playCoords = rowsWithBlanks[rdmIndex].indexOf("") + ", " + board.indexOf(rowsWithBlanks[rdmIndex]);
     }
     else {
         var cols = getColumns();
-        var colsWithBlanks = cols.filter(function(c) {
+        var colsWithBlanks = cols.filter(function (c) {
             return c.indexOf("") > -1;
         });
-        if(colsWithBlanks.length > 0)
+        if (colsWithBlanks.length > 0)
             playCoords = cols.indexOf(colsWithBlanks[0]) + ", " + colsWithBlanks[0].indexOf("");
         else {
             var flatBoard = getFlattenedBoard();
             var ulDiag = [];
             var llDiag = [];
-            for(var i = 0; i < flatBoard.length; i++){
-                if(i % 4 === 0){
+            for (var i = 0; i < flatBoard.length; i++) {
+                if (i % 4 === 0) {
                     ulDiag.push(flatBoard[i]);
                 }
             }
-            if(ulDiag.indexOf("") === -1){
+            if (ulDiag.indexOf("") === -1) {
                 flatBoard.shift();
                 flatBoard.shift();
                 flatBoard.pop();
                 flatBoard.pop();
-                for(var i = 0; i < flatBoard.length; i++){
-                    if(i % 2 === 0){
+                for (var i = 0; i < flatBoard.length; i++) {
+                    if (i % 2 === 0) {
                         llDiag.push(flatBoard[i]);
                     }
                 }
-                if(llDiag.indexOf("") !== -1){
+                if (llDiag.indexOf("") !== -1) {
                     playCoords = getBlankDiagCoords(llDiag, "ll");
                 }
             } else
@@ -351,13 +351,13 @@ function playBlank() {
     return playCoords;
 }
 
-function evaluate(){
+function evaluate() {
     debugger;
-    var winRows = board.filter(function(r){
+    var winRows = board.filter(function (r) {
         return r[0] !== "" && r[0] === r[1] && r[1] === r[2];
     });
-    if(winRows.length > 0){
-        if(winRows[0][0] === player.marker)
+    if (winRows.length > 0) {
+        if (winRows[0][0] === player.marker)
             winDetails.winner = player;
         else
             winDetails.winner = computer;
@@ -367,11 +367,11 @@ function evaluate(){
         winDetails.cellCoords_3 = "2, " + yCoord;
     } else {
         var cols = getColumns();
-        var winCols = cols.filter(function(c){
+        var winCols = cols.filter(function (c) {
             return c[0] !== "" && c[0] === c[1] && c[1] === c[2];
         });
-        if(winCols.length > 0){
-            if(winCols[0][0] === player.marker)
+        if (winCols.length > 0) {
+            if (winCols[0][0] === player.marker)
                 winDetails.winner = player;
             else
                 winDetails.winner = computer;
@@ -382,13 +382,13 @@ function evaluate(){
         } else {
             var flatBoard = getFlattenedBoard();
             var ulDiag = [];
-            for(var i = 0; i < flatBoard.length; i++){
-                if(i % 4 === 0){
+            for (var i = 0; i < flatBoard.length; i++) {
+                if (i % 4 === 0) {
                     ulDiag.push(flatBoard[i]);
                 }
             }
-            if(ulDiag[0] !== "" && ulDiag[0] === ulDiag[1] && ulDiag[1] === ulDiag[2]){
-                if(ulDiag[0] === player.marker)
+            if (ulDiag[0] !== "" && ulDiag[0] === ulDiag[1] && ulDiag[1] === ulDiag[2]) {
+                if (ulDiag[0] === player.marker)
                     winDetails.winner = player;
                 else
                     winDetails.winner = computer;
@@ -401,13 +401,13 @@ function evaluate(){
                 flatBoard.shift();
                 flatBoard.pop();
                 flatBoard.pop();
-                for(var i = 0; i < flatBoard.length; i++){
-                    if(i % 2 === 0){
+                for (var i = 0; i < flatBoard.length; i++) {
+                    if (i % 2 === 0) {
                         llDiag.push(flatBoard[i]);
                     }
                 }
-                if(llDiag[0] !== "" && llDiag[0] === llDiag[1] && llDiag[1] === llDiag[2]){
-                    if(llDiag[0] === player.marker)
+                if (llDiag[0] !== "" && llDiag[0] === llDiag[1] && llDiag[1] === llDiag[2]) {
+                    if (llDiag[0] === player.marker)
                         winDetails.winner = player;
                     else
                         winDetails.winner = computer;
@@ -420,12 +420,12 @@ function evaluate(){
     }
 }
 
-function isDraw(){
-    return winDetails.winner == null && board.filter(function(r){return r.indexOf("") > - 1}).length === 0;
+function isDraw() {
+    return winDetails.winner == null && board.filter(function (r) { return r.indexOf("") > - 1 }).length === 0;
 }
 
 function presentDraw() {
-    $('#drawModal').modal({backdrop: 'static', keyboard: false});
+    $('#drawModal').modal({ backdrop: 'static', keyboard: false });
 }
 
 function presentWin(winner) {
@@ -439,30 +439,30 @@ function presentWin(winner) {
     var cell_3_Coords = winDetails.cellCoords_3.split(",");
     var cell_3_X = cell_3_Coords[0].trim();
     var cell_3_Y = cell_3_Coords[1].trim();
-    $('.square[data-x-coord="' + cell_1_X + '"][data-y-coord="' + cell_1_Y + '"], .square[data-x-coord="' + cell_2_X + '"][data-y-coord="' + cell_2_Y + '"], .square[data-x-coord="' + cell_3_X +'"][data-y-coord="' + cell_3_Y + '"]').fadeOut(1000, function(){
+    $('.square[data-x-coord="' + cell_1_X + '"][data-y-coord="' + cell_1_Y + '"], .square[data-x-coord="' + cell_2_X + '"][data-y-coord="' + cell_2_Y + '"], .square[data-x-coord="' + cell_3_X + '"][data-y-coord="' + cell_3_Y + '"]').fadeOut(1000, function () {
         $(this).css("background-color", "#bb00ff");
     }).fadeIn(1000);
     var playerWins = winDetails.winner === player;
     var winTitle = "You " + (playerWins ? "Win" : "Lose") + "!";
-    var winMessage = playerWins ? 
+    var winMessage = playerWins ?
         "<p>Congratulations! You've shown that you can outsmart a machine that is superior to you in almost every way! Great Job!</p><p>Click the Play Again button to really give the machine what-for, or click the Close button to marvel at your victory.</p>" :
-    "<p>Well, you really put on a show of how inept you are when it comes to besting a metal box at logical thought. The best thing for you to do at this point is just go make a cup of tea, sit down and watch the entire series of Jersey Shore.</p><p>Click the Play Again button to try to redeem yourself, or click the Close button to take a nice long look at the brutal slaughter.</p>";
+        "<p>Well, you really put on a show of how inept you are when it comes to besting a metal box at logical thought. The best thing for you to do at this point is just go make a cup of tea, sit down and watch the entire series of Jersey Shore.</p><p>Click the Play Again button to try to redeem yourself, or click the Close button to take a nice long look at the brutal slaughter.</p>";
     $('.modal-win-title').text(winTitle);
     $('#modalText').html(winMessage);
-    $("#winModal").modal({backdrop: 'static', keyboard: false});
+    $("#winModal").modal({ backdrop: 'static', keyboard: false });
     $('#' + winner + 'Wins').text(parseInt($('#' + winner + 'Wins').text()) + 1);
 }
 
 function reset(modal) {
-    if ($('#'+modal+'Modal').is(":visible")) 
-        $('#'+modal+'Modal').modal("toggle");
+    if ($('#' + modal + 'Modal').is(":visible"))
+        $('#' + modal + 'Modal').modal("toggle");
     winDetails.setDefault();
-    $(".square").fadeOut(1000, function(){
+    $(".square").fadeOut(1000, function () {
         $(this).css("background-color", "#ff6801");
         $(this).empty();
     }).fadeIn(1000);
     board = getNewBoard();
-    $('#playModal').modal({background: 'static', keyboard: false});
+    $('#playModal').modal({ background: 'static', keyboard: false });
 }
 
 function getNewBoard() {
@@ -473,7 +473,7 @@ function getNewBoard() {
     ];
 }
 
-function getColumns(){
+function getColumns() {
     var cols = [];
     for (var i = 0; i < board.length; i++) {
         cols.push([board[0][i], board[1][i], board[2][i]]);
@@ -481,6 +481,6 @@ function getColumns(){
     return cols;
 }
 
-function getFlattenedBoard(){
+function getFlattenedBoard() {
     return [].concat.apply([], board);
 }
