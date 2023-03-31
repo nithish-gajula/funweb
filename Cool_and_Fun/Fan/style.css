@@ -1,11 +1,12 @@
 *,
 *:before,
-*:after{
+*:after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-.fan{
+
+.fan {
     height: 350px;
     width: 350px;
     position: absolute;
@@ -15,7 +16,8 @@
     left: 0;
     right: 0;
 }
-label{
+
+label {
     display: block;
     height: 20px;
     width: 20px;
@@ -28,13 +30,14 @@ label{
     animation: spin 1s infinite linear;
     animation-play-state: paused;
 }
-@keyframes spin{
-    100%{
+
+@keyframes spin {
+    100% {
         transform: rotate(360deg);
-    }    
+    }
 }
 
-label:after{
+label:after {
     content: "";
     position: absolute;
     height: 70px;
@@ -43,9 +46,10 @@ label:after{
     border: 10px solid #00317e;
     border-radius: 50%;
     left: -25px;
-    bottom: -25px; 
+    bottom: -25px;
 }
-label span{
+
+label span {
     display: block;
     height: 120px;
     width: 70px;
@@ -54,21 +58,25 @@ label span{
     position: absolute;
     z-index: -1;
 }
-span:nth-child(1){
+
+span:nth-child(1) {
     bottom: 10px;
     left: 10px;
 }
-span:nth-child(2){
+
+span:nth-child(2) {
     transform: rotate(-120deg);
     left: -95px;
     top: -50px;
 }
-span:nth-child(3){
+
+span:nth-child(3) {
     transform: rotate(-240deg);
     right: -60px;
     top: 10px;
 }
-.base{
+
+.base {
     height: 160px;
     width: 20px;
     background-color: #00317e;
@@ -79,7 +87,8 @@ span:nth-child(3){
     top: 140px;
     z-index: -1;
 }
-.base:after{
+
+.base:after {
     content: "";
     position: absolute;
     height: 35px;
@@ -89,7 +98,8 @@ span:nth-child(3){
     top: 160px;
     border-radius: 20px 20px 0 0;
 }
-input[type="checkbox"]{
+
+input[type="checkbox"] {
     position: absolute;
     -webkit-appearance: none;
     appearance: none;
@@ -103,9 +113,11 @@ input[type="checkbox"]{
     cursor: pointer;
     border-radius: 5px 5px 0 0;
 }
-input[type="checkbox"]:checked{
+
+input[type="checkbox"]:checked {
     height: 8px;
 }
-input[type="checkbox"]:checked + label{
+
+input[type="checkbox"]:checked+label {
     animation-play-state: running;
 }

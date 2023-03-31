@@ -32,7 +32,7 @@ $(function () {
     albums = [
       "Heat Waves",
       "Dandelions",
-      "Stereo Hearts"    
+      "Stereo Hearts"
     ],
     trackNames = [
       "Glass Animals - Heat Waves",

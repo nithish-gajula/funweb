@@ -217,13 +217,14 @@ body {
 #album-art.active img.active {
   z-index: 1;
   -webkit-animation: rotateAlbumArt 3s linear 0s infinite forwards;
-          animation: rotateAlbumArt 3s linear 0s infinite forwards;
+  animation: rotateAlbumArt 3s linear 0s infinite forwards;
 }
 
 @-webkit-keyframes rotateAlbumArt {
   0% {
     transform: rotateZ(0);
   }
+
   100% {
     transform: rotateZ(360deg);
   }
@@ -233,6 +234,7 @@ body {
   0% {
     transform: rotateZ(0);
   }
+
   100% {
     transform: rotateZ(360deg);
   }

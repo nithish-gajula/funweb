@@ -22,7 +22,7 @@ h1:hover {
 
 /* -- YouTube Link Styles -- */
 
-body.menu-toggled > .meta-link > span {
+body.menu-toggled>.meta-link>span {
   color: rgb(30, 30, 30);
 }
 
@@ -30,11 +30,11 @@ body.menu-toggled > .meta-link > span {
   bottom: 60px;
 }
 
-#source-link > i {
+#source-link>i {
   color: rgb(94, 106, 210);
 }
 
-#yt-link > i {
+#yt-link>i {
   color: rgb(239, 83, 80);
 }
 
@@ -46,7 +46,7 @@ body.menu-toggled > .meta-link > span {
   border-radius: 6px;
   bottom: 10px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-  cursor: pointer;  
+  cursor: pointer;
   display: inline-flex;
   gap: 5px;
   left: 10px;
@@ -62,12 +62,13 @@ body.menu-toggled > .meta-link > span {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.meta-link > i, .meta-link > span {
+.meta-link>i,
+.meta-link>span {
   height: 20px;
   line-height: 20px;
 }
 
-.meta-link > span {
+.meta-link>span {
   color: white;
   font-family: "Rubik", sans-serif;
   font-weight: 500;

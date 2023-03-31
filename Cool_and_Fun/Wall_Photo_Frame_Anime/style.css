@@ -67,21 +67,27 @@ body,
 .win {
   background-color: #67a867;
 }
+
 .win #wood {
   fill: #e2b383;
 }
+
 .win #wallpaper {
   fill: #f4f485;
 }
+
 .win #background {
   fill: #617330;
 }
+
 .win #mouth {
   d: path("M388.5 292C376 320.5 341 307.5 336 266C342 300 311 330 288 297");
 }
+
 .win #eyes {
   d: path("M208 216C229 208 247 196 279 218.5M361.5 218.5C379.5 208 407 187 441 210.5");
 }
+
 .win #cat-image {
   filter: saturate(1);
 }

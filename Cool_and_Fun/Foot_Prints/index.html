@@ -11,67 +11,72 @@
 -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <!---Cteated By--
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!---Cteated By--
                       Monu     ---->
-        <title>The Invisible 
-                     ||
-          Footprints Without Feet</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-<script type="text/javascript" src="script.js"></script>
-    </head>
-    <body>
-        <div id="frst">
-            <h3 id="heading">THE INVISIBLE<br><small>(Footprints Without Feet)</small></h3>
-            <b>Choose whom you want to see Invisible:-<br>&#128514;</b>
-            <button onclick="footprints(hum_nak_feet,'Who\'s that ??<br>&#128561;&#128562;')">HUMAN w/o SHOES</button>
-            <button onclick="footprints(hum_in_shoes,'Who\'s that ??<br>&#128552; &#128562;<br>Is that Hero(Gayab Mode ON)&#128541;')">HUMAN IN SHOES</button>
-            <button onclick="footprints(cat,'MACAVITY : The Mystery Cat<br> &#128569;')">CAT</button>
-            <button onclick="footprints(dog,'An Invisible Dog <br>&#128571;')">DOG</button>
-            <footer>
-                <b>If you want to see anyone else  invisible, then just provide the SVG code of that to me........&#128517;<br>Previous Code:-<a href="https://code.sololearn.com/WqfmRe0TwS93/?ref=app">Waves or Beats</a> </b>
-                <b>Created By ☆~Monu~☆</b>
-            </footer>
-        </div>
-        <div id="main">
-            <span id="back">《 GO BACK</span>
-            <p id="com"></p>
-            <div id="path"></div>
-        </div>
-<style>
+    <title>The Invisible Footprints</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+    <div id="frst">
+        <h3 id="heading">THE INVISIBLE<br><small>(Footprints Without Feet)</small></h3>
+        <b>Choose whom you want to see Invisible:-<br>&#128514;</b>
+        <button onclick="footprints(hum_nak_feet,'Who\'s that ??<br>&#128561;&#128562;')">HUMAN w/o SHOES</button>
+        <button
+            onclick="footprints(hum_in_shoes,'Who\'s that ??<br>&#128552; &#128562;<br>Is that Hero(Gayab Mode ON)&#128541;')">HUMAN
+            IN SHOES</button>
+        <button onclick="footprints(cat,'MACAVITY : The Mystery Cat<br> &#128569;')">CAT</button>
+        <button onclick="footprints(dog,'An Invisible Dog <br>&#128571;')">DOG</button>
+        <footer>
+            <b>If you want to see anyone else invisible, then just provide the SVG code of that to
+                me........&#128517;<br>Previous Code:-<a href="https://code.sololearn.com/WqfmRe0TwS93/?ref=app">Waves
+                    or Beats</a> </b>
+            <b>Created By ☆~Monu~☆</b>
+        </footer>
+    </div>
+    <div id="main">
+        <span id="back">《 GO BACK</span>
+        <p id="com"></p>
+        <div id="path"></div>
+    </div>
+    <style>
 
 
-</style>
-<script>
-     var com=document.getElementById("com"),interval,back=document.getElementById("back"),main=document.getElementById("main"),frst=document.getElementById("frst"),a=0,path=document.getElementById('path');
-     var hum_nak_feet='<svg width="60px" height="68px"><path d="M 18 56 C 20 65 36 63 29 49 Q 16 40 25 29 Q 29 14 15 19 Q 3 28 12 40 Q 18 46 18 56" style="stroke:black; fill:black;"></path> <ellipse cx="23" cy="12" rx="3" ry="4"></ellipse><ellipse cx="16" cy="13" rx="2" ry="3" transform="rotate(-13,15,13)"></ellipse> <ellipse cx="11" cy="16" rx="1.8" ry="2.7" transform="rotate(-20,11,15)"></ellipse><ellipse cx="7" cy="18" rx="1.5" ry="2.5" transform="rotate(-28,11,16)"></ellipse><ellipse cx="3" cy="20" rx="1.4" ry="2" transform="rotate(-28,11,16)"></ellipse></svg>';
-     var hum_in_shoes='<svg width="60px" height="68px"><path d="M 10 42 L 24 40 C 31 61 8 62 10 42 Z M 9 37 Q -2 8 13 2 Q 32 1 24 31 L 24 35 Z" style="stroke:black; fill:black"></svg>';
-     var dog='<svg width="60px" height="70px"><path d="M 11 42 Q 7 44 9 47 Q 14 52 19 47 Q 24 49 27 44 Q 28 40 24 40 Q 14 29 11 42 Z M 27 28 Q 22 34 27 38 Q 32 33 27 28 Z M 22 26 C 24 33 16 34 17 27 Q 16 16 22 26 Z M 14 28 Q 11 15 8 28 C 7 34 14 36 14 28 Z M 9 37 C 10 42 3 46 3 39 Q 3 27 9 37 Z" style="stroke:#000; fill:black;"></path></svg>';
-     var cat='<svg width="60px" height="70px"> <path d="M 8 46 Q 14 35 20 45 C 25 45 24 55 14.5 51 C 6 56 4 46 8 45" style="stroke:#000; fill:black;"></path><ellipse cx="4" cy="41" rx="3" ry="4" ></ellipse><ellipse cx="10" cy="35" rx="3.1" ry="4.25"></ellipse><ellipse cx="17.5" cy="34" rx="3.1" ry="4.25"></ellipse><ellipse cx="24" cy="39" rx="3" ry="4"></ellipse></svg>';
-     function footprints(creature,comm){
-         frst.style.display="none";
-         main.style.display="block";
-         com.innerHTML=comm;
-         interval=setInterval(function(){
-             var cont=document.createElement("div");
-             cont.classList.add("cont");
-             cont.innerHTML=creature;
-             if(a% 2==1){
-                 cont.classList.add("left");
-             }
-             path.appendChild(cont);
-             a++;
-         },1200)
-     }
-     back.addEventListener("click",function(){
-         path.innerHTML="";
-         clearInterval(interval);
-         main.style.display="none";
-         frst.style.display="block";
-         a=0;
-     })
+    </style>
+    <script>
+        var com = document.getElementById("com"), interval, back = document.getElementById("back"), main = document.getElementById("main"), frst = document.getElementById("frst"), a = 0, path = document.getElementById('path');
+        var hum_nak_feet = '<svg width="60px" height="68px"><path d="M 18 56 C 20 65 36 63 29 49 Q 16 40 25 29 Q 29 14 15 19 Q 3 28 12 40 Q 18 46 18 56" style="stroke:black; fill:black;"></path> <ellipse cx="23" cy="12" rx="3" ry="4"></ellipse><ellipse cx="16" cy="13" rx="2" ry="3" transform="rotate(-13,15,13)"></ellipse> <ellipse cx="11" cy="16" rx="1.8" ry="2.7" transform="rotate(-20,11,15)"></ellipse><ellipse cx="7" cy="18" rx="1.5" ry="2.5" transform="rotate(-28,11,16)"></ellipse><ellipse cx="3" cy="20" rx="1.4" ry="2" transform="rotate(-28,11,16)"></ellipse></svg>';
+        var hum_in_shoes = '<svg width="60px" height="68px"><path d="M 10 42 L 24 40 C 31 61 8 62 10 42 Z M 9 37 Q -2 8 13 2 Q 32 1 24 31 L 24 35 Z" style="stroke:black; fill:black"></svg>';
+        var dog = '<svg width="60px" height="70px"><path d="M 11 42 Q 7 44 9 47 Q 14 52 19 47 Q 24 49 27 44 Q 28 40 24 40 Q 14 29 11 42 Z M 27 28 Q 22 34 27 38 Q 32 33 27 28 Z M 22 26 C 24 33 16 34 17 27 Q 16 16 22 26 Z M 14 28 Q 11 15 8 28 C 7 34 14 36 14 28 Z M 9 37 C 10 42 3 46 3 39 Q 3 27 9 37 Z" style="stroke:#000; fill:black;"></path></svg>';
+        var cat = '<svg width="60px" height="70px"> <path d="M 8 46 Q 14 35 20 45 C 25 45 24 55 14.5 51 C 6 56 4 46 8 45" style="stroke:#000; fill:black;"></path><ellipse cx="4" cy="41" rx="3" ry="4" ></ellipse><ellipse cx="10" cy="35" rx="3.1" ry="4.25"></ellipse><ellipse cx="17.5" cy="34" rx="3.1" ry="4.25"></ellipse><ellipse cx="24" cy="39" rx="3" ry="4"></ellipse></svg>';
+        function footprints(creature, comm) {
+            frst.style.display = "none";
+            main.style.display = "block";
+            com.innerHTML = comm;
+            interval = setInterval(function () {
+                var cont = document.createElement("div");
+                cont.classList.add("cont");
+                cont.innerHTML = creature;
+                if (a % 2 == 1) {
+                    cont.classList.add("left");
+                }
+                path.appendChild(cont);
+                a++;
+            }, 1200)
+        }
+        back.addEventListener("click", function () {
+            path.innerHTML = "";
+            clearInterval(interval);
+            main.style.display = "none";
+            frst.style.display = "block";
+            a = 0;
+        })
 
-</script>
-    </body>
+    </script>
+</body>
+
 </html>

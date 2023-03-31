@@ -89,7 +89,9 @@ body {
   background-size: auto 222px;
 }
 
-.bike-1, .bike-2 {
+.bike-1,
+.bike-2,
+.bike-3 {
   background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/24650/bike.png) 0 100% no-repeat;
   z-index: 1;
   position: absolute;
@@ -102,21 +104,28 @@ body {
 }
 
 .bike-2 {
-  animation: parallax_bike linear 15s infinite both;
+  animation: parallax_bike linear 11s infinite both;
+}
+
+.bike-3 {
+  animation: parallax_bike linear 12s infinite both;
 }
 
 @keyframes parallax_fg {
   0% {
     background-position: 2765px 100%;
   }
+
   100% {
     background-position: 550px 100%;
   }
 }
+
 @keyframes parallax_bike {
   0% {
     background-position: -300px 100%;
   }
+
   100% {
     background-position: 2000px 100%;
   }

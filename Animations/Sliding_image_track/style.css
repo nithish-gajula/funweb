@@ -12,11 +12,12 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(0%, -50%); 
-  user-select: none; /* -- Prevent image highlighting -- */
+  transform: translate(0%, -50%);
+  user-select: none;
+  /* -- Prevent image highlighting -- */
 }
 
-#image-track > .image {
+#image-track>.image {
   width: 40vmin;
   height: 56vmin;
   object-fit: cover;
@@ -25,7 +26,6 @@ body {
 
 /* -- YouTube Link Styles -- */
 
-body.menu-toggled > .meta-link > span {
+body.menu-toggled>.meta-link>span {
   color: rgb(30, 30, 30);
 }
-

@@ -1,4 +1,3 @@
-// Created by Qaza Metaj
 
 function binär(){
 
@@ -8,7 +7,7 @@ zahl = document.getElementById("zahl").value;
 
 if (zahl == ""){
     
-    alert("Bitte geben Sie eine Zahl ein")
+    alert("Please enter a number")
 }
 
 else{
