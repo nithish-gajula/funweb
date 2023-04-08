@@ -32,18 +32,30 @@ $(function () {
     albums = [
       "Heat Waves",
       "Dandelions",
-      "Stereo Hearts"
+      "Stereo Hearts",
+      "One Direction",
+      "One Kiss",
+      "Blinding Lights",
+      "Closer"
     ],
     trackNames = [
       "Glass Animals - Heat Waves",
       "Ruth B - Dandelions",
-      "Gym Class Heros - Stereo Hearts"
+      "Gym Class Heros - Stereo Hearts",
+      "One Direction - Night Changes",
+      "Calvin Harris, Dua lipa - One Kiss",
+      "The Weeknd - Blinding Lights",
+      "The Chainsmokers - Closer ft. Hasley"
     ],
-    albumArtworks = ["_1", "_2", "_3"],
+    albumArtworks = ["_1", "_2", "_3","_4","_5", "_6", "_7"],
     trackUrl = [
       "audios/Heat_Waves.mp3",
       "audios/Dandelions.mp3",
-      "audios/Stereo_Hearts.mp3"
+      "audios/Stereo_Hearts.mp3",
+      "audios/Night_Changes.mp3",
+      "audios/One_Kiss.mp3",
+      "audios/Blinding_Lights.mp3",
+      "audios/Closer.mp3"
 
     ],
     playPreviousTrackButton = $("#play-previous"),
