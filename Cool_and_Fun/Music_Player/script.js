@@ -45,7 +45,7 @@ $(function () {
       "One Direction - Night Changes",
       "Calvin Harris, Dua lipa - One Kiss",
       "The Weeknd - Blinding Lights",
-      "The Chainsmokers - Closer ft.Hasley"
+      "The Chainsmokrs - Closer ft.Hasley"
     ],
     albumArtworks = ["_1", "_2", "_3","_4","_5", "_6", "_7"],
     trackUrl = [
