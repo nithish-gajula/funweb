@@ -154,7 +154,7 @@ nav a:hover {
 }
 
 .red {
-	color: #ffc0cb;
+	color: #ec407a;
 }
 
 .follower,
@@ -177,23 +177,23 @@ nav a:hover {
 }
 
 .btn1 {
-	background: #ffc0cb;
+	background: #ec407a;
 	color: #fff;
 }
 
 .btn2 {
-	color: #ffc0cb;
-	border: 1px solid #ffc0cb;
+	color: #ec407a;
+	border: 1px solid #ec407a;
 }
 
 .btn1:hover {
 	background: #fff;
-	color: #ffc0cb;
-	border: 1px solid #ffc0cb;
+	color: #ec407a;
+	border: 1px solid #ec407a;
 }
 
 .btn2:hover {
-	background: #ffc0cb;
+	background: #ec407a;
 	color: #fff;
 }
 
@@ -232,6 +232,6 @@ footer a {
 }
 
 footer a:hover {
-	background: #ffc0cb;
+	background: #ec407a;
 	color: #fff;
 }
